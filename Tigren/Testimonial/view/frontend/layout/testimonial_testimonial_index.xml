@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <update handle="styles"/>
+    <!--    <head>-->
+    <!--        <css src="Vendor_Extension::css/custom.css"/>-->
+    <!--        <link src="Vendor_Extension::js/custom.js"/>-->
+    <!--    </head>-->
+    <body>
+        <!--        <referenceBlock name="page.main.title"-->
+        <!--                        template="Vendor_Module::path/to/template.phtml"/>-->
+
+        <referenceContainer name="content">
+            <block class="Tigren\Testimonial\Block\TestimonialList"
+                   name="testimonial.testimonial.index"
+                   template="Tigren_Testimonial::index.phtml">
+                <!--                <arguments>-->
+                <!--                    <argument name="view_model" xsi:type="object">-->
+                <!--                        Tigren\Testimonial\ViewModel\TestimonialViewModel-->
+                <!--                    </argument>-->
+                <!--                </arguments>-->
+            </block>
+        </referenceContainer>
+    </body>
+</page>

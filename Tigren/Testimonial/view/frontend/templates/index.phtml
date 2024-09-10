@@ -1,0 +1,76 @@
+<?php
+
+use Tigren\Testimonial\Block\TestimonialList;
+
+//
+////use Tigren\Testimonial\ViewModel\TestimonialViewModel;
+//
+/** @var  \Tigren\Testimonial\Block\TestimonialList $block */
+///** @var TestimonialViewModel $viewModel */
+//$viewModel = $block->getData('view_model');
+////$listTestimonial = $viewModel->getTestimonials();
+//print_r($block->getTestimonialItem());
+const URL_TESTIMONIAL = "http://magento246.com/tigren/testimonial/";
+$linkImage = $block->getUrl('http://magento246.com/media/testimonials/profile_image/');
+?>
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>List Testimonial</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <style>
+        .flex {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        table {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+<h3>List testimonial</h3>
+<button><a href="<?= URL_TESTIMONIAL . 'create' ?>">Create Testimonial</a></button>
+<table>
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Rating</th>
+        <th width="70%" style="text-align: center">Message</th>
+        <th>Date time</th>
+    </tr>
+    </thead>
+    <tbody>
+    <?php foreach ($block->getTestimonialItem() as $value): ?>
+        <tr>
+            <td>
+                <div class="flex">
+                    <img
+                        src="<?= empty($value->getProfileImage()) ? $linkImage . 'default/default.jpg' : $linkImage . $value->getProfileImage() ?>"
+                        alt="" width="40" height="40">
+                    <?= $value->getName() ?>
+                </div>
+                <?= $value->getEmail() ?>
+            </td>
+            <td class="flex">
+                <?php if ($rating = $value->getRating()): ?>
+                    <?php for ($i = 0; $i < $rating; $i++): ?>
+                        <i class="fa-solid fa-star fa-sm" style="color: #FFD43B;"></i>
+                    <?php endfor; ?>
+                <?php endif; ?>
+            </td>
+            <td><?= $value->getMessage() ?></td>
+            <td><?= $value->getCreatedAt() ?></td>
+        </tr>
+    <?php endforeach; ?>
+    </tbody>
+</table>
+</body>
+</html>
+

@@ -1,0 +1,59 @@
+<?php
+
+use Tigren\Testimonial\Block\TestimonialList;
+
+//
+////use Tigren\Testimonial\ViewModel\TestimonialViewModel;
+//
+/** @var  \Tigren\Testimonial\Block\TestimonialList $block */
+///** @var TestimonialViewModel $viewModel */
+//$viewModel = $block->getData('view_model');
+////$listTestimonial = $viewModel->getTestimonials();
+//print_r($block->getTestimonialItem());
+const URL_TESTIMONIAL = "http://magento246.com/tigren/testimonial/";
+?>
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>List Testimonial</title>
+</head>
+<body>
+<h3>Create testimonial</h3>
+<button><a href="<?= URL_TESTIMONIAL . 'list' ?>">List Testimonial</a></button>
+<form action="<?= $block->getUrl('tigren/testimonial/add') ?>" method="POST" enctype="multipart/form-data">
+    <label for="name">Name</label>
+    <input type="text" name="name">
+
+    <label for="email">Email</label>
+    <input type="email" name="email">
+
+    <label for="profile_image">Profile_Image</label>
+    <input type="file" name="profile_image" accept="image/*">
+    <br>
+    <img src="" width="60" height="60" alt="">
+    <br>
+
+    <label for="rating">Rating</label>
+    <select name="rating" id="">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+    </select>
+    <label for="message">Message</label>
+    <textarea name="message" cols="20" rows="5"></textarea>
+
+    <label for="company">Company</label>
+    <input type="text" name="company">
+
+    <br><br>
+    <button>Send</button>
+</form>
+</body>
+</html>
+

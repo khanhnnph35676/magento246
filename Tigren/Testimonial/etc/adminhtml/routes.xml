@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:App/etc/routes.xsd">
+    <router id="admin">
+        <!--        chú ý id chính là cái để tạo bên layout id_tênthumuccontroller_index-->
+        <route id="testimonial" frontName="testimonial">
+            <module name="Tigren_Testimonial" before="Magento_Backend"/>
+        </route>
+    </router>
+</config>
