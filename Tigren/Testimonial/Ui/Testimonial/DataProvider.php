@@ -19,9 +19,9 @@ class DataProvider extends AbstractDataProvider
     private ReadInterface $mediaDirectory;
 
     /**
-     * @param $name
-     * @param $primaryFieldName
-     * @param $requestFieldName
+     * @param string $name
+     * @param string $primaryFieldName
+     * @param string $requestFieldName
      * @param CollectionFactory $collectionFactory
      * @param StoreManagerInterface $storeManager
      * @param Filesystem $filesystem
@@ -31,15 +31,15 @@ class DataProvider extends AbstractDataProvider
      * @throws FileSystemException
      */
     public function __construct(
-        $name,
-        $primaryFieldName,
-        $requestFieldName,
-        CollectionFactory $collectionFactory,
-        private StoreManagerInterface $storeManager,
-        private Filesystem $filesystem,
-        private Mime $mime,
-        array $meta = [],
-        array $data = []
+        string                                 $name,
+        string                                 $primaryFieldName,
+        string                                 $requestFieldName,
+        CollectionFactory                      $collectionFactory,
+        private readonly StoreManagerInterface $storeManager,
+        private readonly Filesystem            $filesystem,
+        private readonly Mime                  $mime,
+        array                                  $meta = [],
+        array                                  $data = []
     )
     {
         $this->collection = $collectionFactory->create();

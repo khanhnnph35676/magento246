@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="catalog.topnav">
+            <block class="Tigren\Testimonial\Block\CustomLink"
+                   name="CustomLink">
+                <arguments>
+                    <argument name="label" xsi:type="string">
+                        Testimonials
+                    </argument>
+                    <argument name="path" xsi:type="string">
+                        http://magento246.com/tigren/testimonial/
+                    </argument>
+                </arguments>
+            </block>
+            <block class="Tigren\Testimonial\Block\CustomLink"
+                   name="CustomLink2">
+                <arguments>
+                    <argument name="label" xsi:type="string">
+                        Blogs
+                    </argument>
+                    <argument name="path" xsi:type="string">
+                    </argument>
+                </arguments>
+            </block>
+        </referenceBlock>
+    </body>
+</page>

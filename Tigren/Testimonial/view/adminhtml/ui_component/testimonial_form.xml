@@ -81,23 +81,6 @@
                 </checkbox>
             </formElements>
         </field>
-        <field name="customer_id" sortOrder="10" formElement="select">
-            <argument name="data" xsi:type="array">
-                <item name="config" xsi:type="array">
-                    <item name="dataType" xsi:type="string">int</item>
-                    <item name="label" xsi:type="string" translate="true">Customer</item>
-                    <item name="dataScope" xsi:type="string">customer_id</item>
-                    <item name="optionsProvider" xsi:type="string">
-                        Tigren\Testimonial\Ui\Component\Listing\Column\CustomerOptions
-                    </item>
-                </item>
-            </argument>
-            <settings>
-                <dataType>int</dataType>
-                <label translate="true">Customer</label>
-                <dataScope>customer_id</dataScope>
-            </settings>
-        </field>
         <field name="name" sortOrder="20" formElement="input">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
@@ -155,7 +138,6 @@
                 </imageUploader>
             </formElements>
         </field>
-
         <field name="message" sortOrder="100" formElement="textarea">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
@@ -207,5 +189,26 @@
                 </select>
             </formElements>
         </field>
+    </fieldset>
+    <fieldset name="assign_customer_grid">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="label" xsi:type="string" translate="true">Customer Fieldset</item>
+                <item name="collapsible" xsi:type="boolean">true</item>
+                <item name="sortOrder" xsi:type="number">30</item>
+            </item>
+        </argument>
+        <container name="assign_products_container">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="sortOrder" xsi:type="number">170</item>
+                </item>
+            </argument>
+        </container>
+        <htmlContent name="html_content">
+            <argument name="block" xsi:type="object">
+                Tigren\Testimonial\Block\Adminhtml\AssignCustomer
+            </argument>
+        </htmlContent>
     </fieldset>
 </form>

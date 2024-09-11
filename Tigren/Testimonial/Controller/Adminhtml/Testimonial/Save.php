@@ -54,6 +54,7 @@ class Save extends Action implements ButtonProviderInterface
         } else {
             unset($data['profile_image']);
         }
+
         $id = !empty($data['entity_id']) ? $data['entity_id'] : null;
         $image = isset($data['profile_image']) ? $data['profile_image'][0] : null;
         $newData = [
@@ -62,8 +63,11 @@ class Save extends Action implements ButtonProviderInterface
             'status' => $data['status'],
             'message' => $data['message'],
             'rating' => $data['rating'],
-            'profile_image' => $image
+            'profile_image' => $image,
+            'customer_id' => $data['data']['customer'],
         ];
+//        var_dump($newData);
+//        dd();
         $testimonial = $this->testimonialFactory->create();
         if (isset($id)) {
             $testimonial->load($id);
@@ -71,14 +75,14 @@ class Save extends Action implements ButtonProviderInterface
         try {
             $testimonial->addData($newData);
             $testimonial->save();
-//            $customerId = $this->customerSession->getCustomerId();
-//            $customer = $this->customerRepository->getById($customerId);
-//
-//            // Kiểm tra nếu chưa có testimonial thì cập nhật
-//            if (!$customer->getCustomAttribute('is_created_testimonial')
-//                || !$customer->getCustomAttribute('is_created_testimonial')->getValue()) {
-//                $customer->setCustomAttribute('is_created_testimonial', 1); // Cập nhật thành true
-//                $this->customerRepository->save($customer); // Lưu lại thông tin customer
+//            $customerId = $data['data']['customer'];
+//            if ($customerId) {
+//                $customer = $this->customerRepository->getById($customerId);
+//                if (!$customer->getCustomAttribute('is_created_testimonial') ||
+//                    !$customer->getCustomAttribute('is_created_testimonial')->getValue()) {
+//                    $customer->setCustomAttribute('is_created_testimonial', 1);
+//                    $this->customerRepository->save($customer);
+//                }
 //            }
         } catch (\Exception $exception) {
             $this->messageManager->addErrorMessage(__($exception->getMessage()));

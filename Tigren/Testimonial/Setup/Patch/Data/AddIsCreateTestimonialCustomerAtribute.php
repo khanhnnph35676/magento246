@@ -12,7 +12,7 @@ use Magento\Framework\Setup\ModuleDataSetupInterface;
 use Magento\Framework\Setup\Patch\DataPatchInterface;
 use Magento\Framework\Setup\Patch\PatchRevertableInterface;
 
-class AddIsCreateTestimonialCustommerAtribute implements DataPatchInterface, PatchRevertableInterface
+class AddIsCreateTestimonialCustomerAtribute implements DataPatchInterface, PatchRevertableInterface
 {
     /**
      * @param ModuleDataSetupInterface $moduleDataSetup
@@ -43,7 +43,7 @@ class AddIsCreateTestimonialCustommerAtribute implements DataPatchInterface, Pat
         $attributeSet = $this->attributeSetFactory->create();
         $attributeGroupId = $attributeSet->getDefaultGroupId($attributeSetId);
 
-        $customerSetup > addAttribute(
+        $customerSetup->addAttribute(
             Customer::ENTITY,
             'is_created_testimonial',
             [
@@ -51,15 +51,15 @@ class AddIsCreateTestimonialCustommerAtribute implements DataPatchInterface, Pat
                 'input' => 'boolean',
                 'type' => 'int',
                 'default' => '0', //mac dinh la false
-                'source' => '',
-                'required' => false,
+                'source' => \Magento\Eav\Model\Entity\Attribute\Source\Boolean::class,
+                'required' => true,
                 'position' => 333,
                 'visible' => true,
                 'system' => false,
                 'is_used_in_grid' => true,
                 'is_visible_in_grid' => true,
                 'is_filterable_in_grid' => true,
-                'is_searchable_in_grid' => true,
+                'is_searchable_in_grid' => false,
                 'backend' => '',
             ]
         );
@@ -88,9 +88,6 @@ class AddIsCreateTestimonialCustommerAtribute implements DataPatchInterface, Pat
         $this->moduleDataSetup->getConnection()->endSetup();
     }
 
-    /**
-     * @return {inheritdoc}
-     */
     public function getAliases(): array
     {
         return [];
