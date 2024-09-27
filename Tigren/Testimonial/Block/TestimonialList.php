@@ -19,7 +19,7 @@ class TestimonialList extends Template
 
     /**
      * Testimonial resource model
-     * @var Tigren\Testimonial\Model\ResourceModel\Testimonial\CollectionFactory
+     * @var \Tigren\Testimonial\Model\ResourceModel\Testimonial\CollectionFactory
      */
     protected $_testimonialCollectionFactory;
 

@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <!--    <type name="Magento\Catalog\Block\Product\View">-->
+    <!--        <plugin name="hide_price_product_view" type="Tigren\HidePrice\Plugin\Catalog\Product\View"/>-->
+    <!--    </type>-->
+    <!--    <type name="Magento\Catalog\Model\Product">-->
+    <!--        <plugin name="hide_product_price" type="Tigren\HidePrice\Plugin\Catalog\Product\HidePrice"/>-->
+    <!--    </type>-->
+</config>
+
+

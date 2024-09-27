@@ -1,7 +1,18 @@
 <?xml version="1.0"?>
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <!-- bai tap js-->
+    <!--    <head>-->
+    <!--        <script src="Tigren_Testimonial::js/custom-script.js"></script>-->
+    <!--    </head>-->
+    <!--end-->
     <body>
+        <!-- phan bai tap-->
+        <!--        <referenceContainer name="content-test">-->
+        <!--            <block class="Magento\Framework\View\Element\Template" name="tigren.testimonial.block"-->
+        <!--                   template="Tigren_Testimonial::simple.phtml"/>-->
+        <!--        </referenceContainer>-->
+        <!--end-->
         <referenceBlock name="catalog.topnav">
             <block class="Tigren\Testimonial\Block\CustomLink"
                    name="CustomLink">
@@ -18,9 +29,10 @@
                    name="CustomLink2">
                 <arguments>
                     <argument name="label" xsi:type="string">
-                        Blogs
+                        History
                     </argument>
                     <argument name="path" xsi:type="string">
+                        http://magento246.com/rule/rule/index
                     </argument>
                 </arguments>
             </block>

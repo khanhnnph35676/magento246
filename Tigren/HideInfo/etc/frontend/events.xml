@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <!--    AN addto cart va bien the-->
+    <event name="catalog_product_is_salable_after">
+        <observer name="tigren_product_available" instance="Tigren\HideInfo\Observer\SalableObserver"/>
+    </event>
+
+    <!--    <event name="sales_quote_product_add_after">-->
+    <!--        <observer name="tigren_product_available" instance="Tigren\HideInfo\Observer\QuoteObserver"/>-->
+    <!--    </event>-->
+
+    <!--  An gia het san pham ben trang chu-->
+    <event name="catalog_product_collection_load_after">
+        <observer name="tigren_product_available" instance="Tigren\HideInfo\Observer\CollectionObserver"/>
+    </event>
+    <!--  An gia het san pham luon-->
+    <event name="catalog_product_load_after">
+        <observer name="tigren_product_available" instance="Tigren\HideInfo\Observer\ProductObserver"/>
+    </event>
+</config>

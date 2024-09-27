@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Menu/etc/menu.xsd">
+    <menu>
+        <add id="Tigren_CustomerGroupCatalog::customer_group_catalog"
+             title="Customer Group Catalog"
+             translate="title"
+             module="Tigren_CustomerGroupCatalog"
+             sortOrder="20"
+             parent="Magento_Backend::content_elements"
+             action="customer_group_catalog/index/index"
+             resource="Tigren_CustomerGroupCatalog::customer_group_catalog"/>
+    </menu>
+</config>
+

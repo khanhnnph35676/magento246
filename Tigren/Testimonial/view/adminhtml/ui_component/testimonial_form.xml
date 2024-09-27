@@ -190,7 +190,7 @@
             </formElements>
         </field>
     </fieldset>
-    <fieldset name="assign_customer_grid">
+    <fieldset name="assign_customers_grid">
         <argument name="data" xsi:type="array">
             <item name="config" xsi:type="array">
                 <item name="label" xsi:type="string" translate="true">Customer Fieldset</item>
@@ -198,7 +198,7 @@
                 <item name="sortOrder" xsi:type="number">30</item>
             </item>
         </argument>
-        <container name="assign_products_container">
+        <container name="assign_customers_container">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="sortOrder" xsi:type="number">170</item>

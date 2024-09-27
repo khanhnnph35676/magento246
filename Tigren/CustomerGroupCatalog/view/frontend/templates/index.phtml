@@ -1,0 +1,57 @@
+<?php
+
+use Magento\Customer\Model\SessionFactory;
+
+
+/** @var  \Tigren\CustomerGroupCatalog\Block\RuleList $block */
+const URL_RULE = "http://magento246.com/rule/rule/";
+?>
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>List Rule</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <style>
+        .flex {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        table {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+<h3>History</h3>
+<table>
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>Order</th>
+        <th>Customer</th>
+        <th>Rule</th>
+        <th>End Time</th>
+    </tr>
+    </thead>
+    <tbody>
+    <?php
+    foreach ($block->getRuleItem() as $value): ?>
+        <tr>
+            <td><?= $value->getEntityId() ?></td>
+            <td><?= $value->getOrderId() ?></td>
+            <td><?= $value->getCustomerId() ?></td>
+            <td><?= $value->getRuleId() ?></td>
+            <td><?= $value->getCreatedAt() ?></td>
+        </tr>
+    <?php endforeach; ?>
+    </tbody>
+</table>
+</body>
+</html>
+

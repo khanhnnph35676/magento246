@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="shipping_restrictions" resource="default" engine="innodb" comment="Shipping Restrictions Table">
+        <column name="entity_id" xsi:type="int" nullable="false" identity="true" unsigned="true" comment="Entity ID"/>
+        <column name="name" xsi:type="varchar" length="255" nullable="false" comment="Name"/>
+        <column name="description" xsi:type="text" nullable="true" comment="Description"/>
+        <column name="status" xsi:type="tinyint" nullable="false" default="1" comment="Status"/>
+        <column name="store_id" xsi:type="int" nullable="false" unsigned="true" comment="Store ID"/>
+        <column name="customer_group_id" xsi:type="int" nullable="false" unsigned="true" comment="Customer Group ID"/>
+        <column name="discard_subsequent_rules" xsi:type="tinyint" nullable="false" default="0"
+                comment="Discard Subsequent Rules"/>
+        <column name="priority" xsi:type="int" nullable="false" default="0" comment="Priority"/>
+        <column name="from_date" xsi:type="date" nullable="true" comment="From Date"/>
+        <column name="to_date" xsi:type="date" nullable="true" comment="To Date"/>
+        <column name="conditions_serialized" xsi:type="text" nullable="true" comment="Serialized Conditions"/>
+
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="entity_id"/>
+        </constraint>
+    </table>
+</schema>

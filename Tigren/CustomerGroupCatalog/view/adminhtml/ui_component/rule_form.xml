@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">rule_form.rule_form_data_source</item>
+        </item>
+        <item name="label" xsi:type="string" translate="true">General Information</item>
+        <item name="template" xsi:type="string">templates/form/collapsible</item>
+    </argument>
+    <settings>
+        <buttons>
+            <button name="save" class="Tigren\CustomerGroupCatalog\Controller\Adminhtml\Index\Save"/>
+            <button name="delete" class="Tigren\CustomerGroupCatalog\Controller\Adminhtml\Index\Delete"/>
+            <button name="back" class="Magento\Cms\Block\Adminhtml\Block\Edit\BackButton"/>
+        </buttons>
+        <namespace>rule_form</namespace>
+        <dataScope>data</dataScope>
+        <deps>
+            <dep>rule_form.rule_form_data_source</dep>
+        </deps>
+    </settings>
+    <dataSource name="rule_form_data_source">
+        <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+            </item>
+        </argument>
+        <settings>
+            <submitUrl path="*/*/save"/>
+        </settings>
+        <dataProvider class="Tigren\CustomerGroupCatalog\Ui\CustomerGroupCatalog\DataProvider"
+                      name="rule_form_data_source">
+            <settings>
+                <requestFieldName>rule_id</requestFieldName>
+                <primaryFieldName>rule_id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+    <fieldset name="general">
+        <settings>
+            <label/>
+        </settings>
+        <field name="rule_id" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">customer_group_catalog_rule</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>text</dataType>
+                <visible>false</visible>
+                <dataScope>rule_id</dataScope>
+            </settings>
+        </field>
+        <field name="is_active" sortOrder="10" formElement="checkbox">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">customer_group_catalog_rule</item>
+                    <item name="default" xsi:type="number">1</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>boolean</dataType>
+                <label translate="true">Enable</label>
+                <dataScope>is_active</dataScope>
+            </settings>
+            <formElements>
+                <checkbox>
+                    <settings>
+                        <valueMap>
+                            <map name="false" xsi:type="number">0</map>
+                            <map name="true" xsi:type="number">1</map>
+                        </valueMap>
+                        <prefer>toggle</prefer>
+                    </settings>
+                </checkbox>
+            </formElements>
+        </field>
+        <field name="discount_amount" sortOrder="20" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">customer_group_catalog_rule</item>
+                </item>
+            </argument>
+            <settings>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+                <dataType>text</dataType>
+                <label translate="true">Discount Amount</label>
+                <dataScope>discount_amount</dataScope>
+            </settings>
+        </field>
+        <field name="name" sortOrder="20" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">customer_group_catalog_rule</item>
+                </item>
+            </argument>
+            <settings>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+                <dataType>text</dataType>
+                <label translate="true">Name</label>
+                <dataScope>name</dataScope>
+            </settings>
+        </field>
+        <field name="priority" sortOrder="20" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">customer_group_catalog_rule</item>
+                </item>
+            </argument>
+            <settings>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+                <dataType>text</dataType>
+                <label translate="true">Priority</label>
+                <dataScope>priority</dataScope>
+            </settings>
+        </field>
+        <field name="customer_group_ids" formElement="multiselect">
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Group</label>
+                <dataScope>customer_group_ids</dataScope>
+            </settings>
+            <formElements>
+                <multiselect>
+                    <settings>
+                        <options class="Magento\CatalogRule\Model\Rule\CustomerGroupsOptionsProvider"/>
+                    </settings>
+                </multiselect>
+            </formElements>
+        </field>
+        <field name="stat_time" sortOrder="20" formElement="date">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">customer_group_catalog_rule</item>
+                </item>
+            </argument>
+            <settings>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+                <dataType>text</dataType>
+                <label translate="true">Start time</label>
+                <dataScope>start_time</dataScope>
+            </settings>
+        </field>
+        <field name="end_time" sortOrder="20" formElement="date">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">customer_group_catalog_rule</item>
+                </item>
+            </argument>
+            <settings>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+                <dataType>text</dataType>
+                <label translate="true">End time</label>
+                <dataScope>end_time</dataScope>
+            </settings>
+        </field>
+    </fieldset>
+    <fieldset name="assign_product_grid">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="label" xsi:type="string" translate="true">Products Fieldset</item>
+                <item name="collapsible" xsi:type="boolean">true</item>
+                <item name="sortOrder" xsi:type="number">30</item>
+            </item>
+        </argument>
+        <container name="assign_products_container">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="sortOrder" xsi:type="number">170</item>
+                </item>
+            </argument>
+            <htmlContent name="html_content">
+                <argument name="block" xsi:type="object">Tigren\CustomerGroupCatalog\Block\Adminhtml\AssignProducts
+                </argument>
+            </htmlContent>
+            <field name="selected_products" formElement="hidden">
+                <settings>
+                    <dataType>text</dataType>
+                    <dataScope>entity_id</dataScope>
+                </settings>
+            </field>
+        </container>
+    </fieldset>
+    <fieldset name="assign_store_grid">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="label" xsi:type="string" translate="true">Store Fieldset</item>
+                <item name="collapsible" xsi:type="boolean">true</item>
+                <item name="sortOrder" xsi:type="number">30</item>
+            </item>
+        </argument>
+        <container name="assign_store_container">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="sortOrder" xsi:type="number">170</item>
+                </item>
+            </argument>
+            <htmlContent name="html_content">
+                <argument name="block" xsi:type="object">Tigren\CustomerGroupCatalog\Block\Adminhtml\AssignStore
+                </argument>
+            </htmlContent>
+        </container>
+    </fieldset>
+    <!--    <fieldset name="assign_customer_group_grid">-->
+    <!--        <argument name="data" xsi:type="array">-->
+    <!--            <item name="config" xsi:type="array">-->
+    <!--                <item name="label" xsi:type="string" translate="true">Customer Group Fieldset</item>-->
+    <!--                <item name="collapsible" xsi:type="boolean">true</item>-->
+    <!--                <item name="sortOrder" xsi:type="number">30</item>-->
+    <!--            </item>-->
+    <!--        </argument>-->
+    <!--        <container name="assign_customer_group_container">-->
+    <!--            <argument name="data" xsi:type="array">-->
+    <!--                <item name="config" xsi:type="array">-->
+    <!--                    <item name="sortOrder" xsi:type="number">170</item>-->
+    <!--                </item>-->
+    <!--            </argument>-->
+    <!--            <htmlContent name="html_content">-->
+    <!--                <argument name="block" xsi:type="object">Tigren\CustomerGroupCatalog\Block\Adminhtml\AssignCustomerGroup-->
+    <!--                </argument>-->
+    <!--            </htmlContent>-->
+    <!--        </container>-->
+    <!--    </fieldset>-->
+</form>

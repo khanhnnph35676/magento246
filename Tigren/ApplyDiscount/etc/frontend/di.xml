@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Catalog\Block\Product\ListProduct">
+        <plugin name="tigren_apply_discount_list"
+                type="Tigren\ApplyDiscount\Plugin\Catalog\Product\ApplyDiscountProduct"/>
+    </type>
+
+    <!--    <type name="Magento\Checkout\Model\Cart">-->
+    <!--        <plugin name="tigren_apply_discount_in_cart" type="Tigren\Plugin\Plugin\Catalog\Product\ApplyDiscountInCart"/>-->
+    <!--    </type>-->
+</config>
+
+

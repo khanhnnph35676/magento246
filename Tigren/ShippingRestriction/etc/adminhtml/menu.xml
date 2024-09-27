@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Menu/etc/menu.xsd">
+    <menu>
+        <add id="Tigren_ShippingRestriction::shipping_restriction"
+             title="Shipping Restriction"
+             translate="title"
+             module="Tigren_ShippingRestriction"
+             sortOrder="20"
+             parent="Magento_Backend::content_elements"
+             action="shipping_restriction/index/index"
+             resource="Tigren_ShippingRestriction::shipping_restriction"/>
+    </menu>
+</config>
+

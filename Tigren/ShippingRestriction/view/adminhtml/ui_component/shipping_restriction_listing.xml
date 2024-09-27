@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">
+                shipping_restriction_listing.shipping_restriction_listing_data_source
+            </item>
+        </item>
+    </argument>
+    <settings>
+        <spinner>shipping_restriction_columns</spinner>
+        <deps>
+            <dep>shipping_restriction_listing.shipping_restriction_listing_data_source</dep>
+        </deps>
+        <buttons>
+            <button name="add">
+                <url path="*/*/gridtab"/>
+                <class>primary</class>
+                <label translate="true">Add new</label>
+            </button>
+        </buttons>
+    </settings>
+
+    <listingToolbar name="listing_top">
+        <settings>
+            <sticky>true</sticky>
+        </settings>
+        <filterSearch name="fulltext"/>
+        <bookmark name="bookmarks"/>
+        <exportButton name="export_button"/>
+        <columnsControls name="columns_controls"/>
+        <filters name="listing_filters"/>
+        <paging name="listing_paging"/>
+
+        <massaction name="listing_massaction">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="component" xsi:type="string">Magento_Ui/js/grid/massactions</item>
+                </item>
+            </argument>
+            <action name="delete">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="type" xsi:type="string">delete</item>
+                        <item name="label" xsi:type="string" translate="true">Delete</item>
+                        <item name="url" xsi:type="url" path="*/*/delete"/>
+                        <item name="confirm" xsi:type="array">
+                            <item name="title" xsi:type="string" translate="true">Delete Row</item>
+                            <item name="message" xsi:type="string" translate="true">Are you sure you want to delete
+                                selected items?
+                            </item>
+                        </item>
+                    </item>
+                </argument>
+            </action>
+        </massaction>
+    </listingToolbar>
+
+    <dataSource name="shipping_restriction_listing_data_source" component="Magento_Ui/js/grid/provider">
+        <settings>
+            <updateUrl path="mui/index/render"/>
+            <storageConfig>
+                <param name="indexField" xsi:type="string">entity_id</param>
+            </storageConfig>
+        </settings>
+        <aclResource>Tigren_ShippingRestriction::listing</aclResource>
+        <dataProvider class="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider"
+                      name="shipping_restriction_listing_data_source">
+            <settings>
+                <requestFieldName>entity_id</requestFieldName>
+                <primaryFieldName>entity_id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+
+    <columns name="shipping_restriction_columns">
+        <settings>
+            <editorConfig>
+                <param name="clientConfig" xsi:type="array">
+                    <item name="saveUrl" xsi:type="url" path="testimonial/testimonial/index/inlineEdit"/>
+                    <item name="validateBeforeSave" xsi:type="boolean">false</item>
+                </param>
+                <param name="indexField" xsi:type="string">entity_id</param>
+                <param name="enabled" xsi:type="boolean">true</param>
+                <param name="selectProvider" xsi:type="string">
+                    shipping_restriction_listing.shipping_restriction_listing.shipping_restriction_columns.ids
+                </param>
+            </editorConfig>
+            <childDefaults>
+                <param name="fieldAction" xsi:type="array">
+                    <item name="provider" xsi:type="string">
+                        shipping_restriction_listing.shipping_restriction_listing.shipping_restriction_columns_editor
+                    </item>
+                    <item name="target" xsi:type="string">startEdit</item>
+                    <item name="params" xsi:type="array">
+                        <item name="0" xsi:type="string">${ $.$data.rowIndex }</item>
+                        <item name="1" xsi:type="boolean">true</item>
+                    </item>
+                </param>
+            </childDefaults>
+        </settings>
+        <selectionsColumn name="ids">
+            <settings>
+                <indexField>entity_id</indexField>
+            </settings>
+        </selectionsColumn>
+
+        <column name="entity_id">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">ID</label>
+            </settings>
+        </column>
+        <column name="status" component="Magento_Ui/js/grid/columns/select">
+            <settings>
+                <options class="Tigren\ShippingRestriction\Ui\Source\Listing\Column\IsActive"/>
+                <filter>select</filter>
+                <editor>
+                    <editorType>select</editorType>
+                </editor>
+                <dataType>select</dataType>
+                <label translate="true">Is Active</label>
+            </settings>
+        </column>
+        <column name="name">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Name</label>
+            </settings>
+        </column>
+        <column name="customer_group_ids">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Group</label>
+            </settings>
+        </column>
+        <column name="description">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Description</label>
+            </settings>
+        </column>
+        <column name="store_id">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Store ID</label>
+            </settings>
+        </column>
+        <column name="discard_subsequent_rules">
+            <settings>
+                <filter>range</filter>
+                <label translate="true">DisCard</label>
+            </settings>
+        </column>
+        <column name="priority">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Priority</label>
+            </settings>
+        </column>
+        <column name="conditions_serialized">
+            <settings>
+                <filter>dateRange</filter>
+                <label translate="true">Conditions Serialized</label>
+            </settings>
+        </column>
+        <column name="from_date">
+            <settings>
+                <filter>dateRange</filter>
+                <label translate="true">Start Time</label>
+            </settings>
+        </column>
+        <column name="to_date">
+            <settings>
+                <filter>dateRange</filter>
+                <label translate="true">End Time</label>
+            </settings>
+        </column>
+        <actionsColumn name="actions" class="Tigren\ShippingRestriction\Ui\Component\Listing\Column\Actions">
+            <settings>
+                <indexField>entity_id</indexField>
+            </settings>
+        </actionsColumn>
+    </columns>
+</listing>
