@@ -3,13 +3,21 @@
         xsi:noNamespaceSchemaLocation="urn:magento:framework:Menu/etc/menu.xsd">
     <menu>
         <add id="Tigren_SimpleBlog::post"
-             title="Simple Blog"
+             title="Blog Post"
              translate="title"
              module="Tigren_SimpleBlog"
              sortOrder="20"
              parent="Magento_Backend::content_elements"
              action="simple_blog/post/index"
              resource="Tigren_SimpleBlog::post"/>
+        <add id="Tigren_SimpleBlog::category"
+             title="Blog Category"
+             translate="title"
+             module="Tigren_SimpleBlog"
+             sortOrder="20"
+             parent="Magento_Backend::content_elements"
+             action="simple_blog/category/index"
+             resource="Tigren_SimpleBlog::category"/>
     </menu>
 </config>
 

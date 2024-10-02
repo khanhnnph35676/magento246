@@ -1,4 +1,11 @@
 <?php
+/*
+ * @author    Tigren Solutions <info@tigren.com>
+ * @copyright Copyright (c) 2024 Tigren Solutions <https://www.tigren.com>. All rights reserved.
+ * @license   Open Software License ("OSL") v. 3.0
+ *
+ */
+
 declare(strict_types=1);
 
 namespace Tigren\SimpleBlog\Ui\Component\Listing\Column;
@@ -9,10 +16,13 @@ use Magento\Framework\View\Element\UiComponent\ContextInterface;
 use Magento\Framework\View\Element\UiComponentFactory;
 use Magento\Ui\Component\Listing\Columns\Column;
 
+/**
+ * Class Actions
+ */
 class Actions extends Column
 {
     const URL_PATH_EDIT = 'simple_blog/post/form';
-    const URL_PATH_DELETE = 'simple_blog/post//delete';
+    const URL_PATH_DELETE = 'simple_blog/post/delete';
     private UrlInterface $urlBuilder;
     /**
      * @var string

@@ -1,18 +1,25 @@
 <?xml version="1.0"?>
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
-    <!-- bai tap js-->
-    <!--    <head>-->
-    <!--        <script src="Tigren_Testimonial::js/custom-script.js"></script>-->
-    <!--    </head>-->
-    <!--end-->
+    <head>
+        <script src="Tigren_Testimonial::js/example1.js"/>
+    </head>
     <body>
-        <!-- phan bai tap-->
-        <!--        <referenceContainer name="content-test">-->
-        <!--            <block class="Magento\Framework\View\Element\Template" name="tigren.testimonial.block"-->
-        <!--                   template="Tigren_Testimonial::simple.phtml"/>-->
+        <referenceContainer name="content">
+            <block class="Magento\Framework\View\Element\Template" template="Tigren_Testimonial::example2.phtml"/>
+        </referenceContainer>
+        <!--        <referenceContainer name="content">-->
+        <!--            <block class="Magento\Framework\View\Element\Template" name="custom_js_block"-->
+        <!--                   template="Tigren_Testimonial::example2.phtml">-->
+        <!--                <arguments>-->
+        <!--                    <argument name="jsLayout" xsi:type="array">-->
+        <!--                        <item name="customJsConfig" xsi:type="array">-->
+        <!--                            <item name="message" xsi:type="string">Hello from layout!</item>-->
+        <!--                        </item>-->
+        <!--                    </argument>-->
+        <!--                </arguments>-->
+        <!--            </block>-->
         <!--        </referenceContainer>-->
-        <!--end-->
         <referenceBlock name="catalog.topnav">
             <block class="Tigren\Testimonial\Block\CustomLink"
                    name="CustomLink">
@@ -33,6 +40,17 @@
                     </argument>
                     <argument name="path" xsi:type="string">
                         http://magento246.com/rule/rule/index
+                    </argument>
+                </arguments>
+            </block>
+            <block class="Tigren\Testimonial\Block\CustomListLink"
+                   name="CustomLink3">
+                <arguments>
+                    <argument name="label" xsi:type="string">
+                        Blog Categories
+                    </argument>
+                    <argument name="path" xsi:type="string">
+                        http://magento246.com/blog/post/
                     </argument>
                 </arguments>
             </block>

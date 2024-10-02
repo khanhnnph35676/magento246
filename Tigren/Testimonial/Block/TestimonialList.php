@@ -7,6 +7,7 @@ use Magento\Framework\View\Element\Template;
 use Tigren\Testimonial\Model\ResourceModel\Testimonial\Collection as TestimonialCollection;
 use Tigren\Testimonial\Model\ResourceModel\Testimonial\CollectionFactory;
 use Magento\Store\Model\ScopeInterface;
+use Magento\Customer\Model\SessionFactory;
 
 class TestimonialList extends Template
 {
@@ -15,6 +16,7 @@ class TestimonialList extends Template
      * Testimonial Collection
      * @var TestimonialCollection
      */
+    protected $sessionFactory;
     protected $_testimonialCollection;
 
     /**
@@ -47,9 +49,11 @@ class TestimonialList extends Template
 
     public function getTestimonialItem()
     {
+//        $session = $sessionFactory->create();
         if ($this->_testimonialCollection === null) {
             $this->_testimonialCollection = $this->_testimonialCollectionFactory->create();
         }
         return $this->_testimonialCollection;
+
     }
 }

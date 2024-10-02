@@ -16,6 +16,13 @@
                 </item>
             </argument>
         </arguments>
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="category_listing_data_source" xsi:type="string">
+                    Tigren\SimpleBlog\Model\ResourceModel\Category\Grid\Collection
+                </item>
+            </argument>
+        </arguments>
     </type>
     <virtualType name="Tigren\SimpleBlog\Model\ResourceModel\Post\Grid\Collection"
                  type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
@@ -25,6 +32,17 @@
             <argument name="eventObject" xsi:type="string">post_collection</argument>
             <argument name="resourceModel" xsi:type="string">
                 Tigren\SimpleBlog\Model\ResourceModel\Post
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Tigren\SimpleBlog\Model\ResourceModel\Category\Grid\Collection"
+                 type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">blog_category</argument>
+            <argument name="eventPrefix" xsi:type="string">category_grid_collection</argument>
+            <argument name="eventObject" xsi:type="string">category_collection</argument>
+            <argument name="resourceModel" xsi:type="string">
+                Tigren\SimpleBlog\Model\ResourceModel\Category
             </argument>
         </arguments>
     </virtualType>

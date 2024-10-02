@@ -5,15 +5,16 @@ namespace Tigren\CustomerGroupCatalog\Block;
 use Magento\Framework\View\Element\Template;
 use Tigren\CustomerGroupCatalog\Model\ResourceModel\HistoryRule\Collection as RuleCollection;
 use Tigren\CustomerGroupCatalog\Model\ResourceModel\HistoryRule\CollectionFactory;
+use Magento\Customer\Model\Session;
 
 class RuleList extends Template
 {
     /**
-     * Testimonial Collection
+     * Rule Collection
      * @var RuleCollection
      */
     protected $_ruleCollection;
-
+    protected $customerSession;
     /**
      * Testimonial resource model
      * @var \Tigren\CustomerGroupCatalog\Model\ResourceModel\HistoryRule\CollectionFactory
@@ -30,11 +31,13 @@ class RuleList extends Template
     public function __construct(
         Template\Context  $context,
         CollectionFactory $collectionFactory,
+        Session           $customerSession,
         array             $data = []
     )
     {
         $this->_ruleColFactory = $collectionFactory;
         parent::__construct($context, $data);
+        $this->customerSession = $customerSession;
     }
 
     /**

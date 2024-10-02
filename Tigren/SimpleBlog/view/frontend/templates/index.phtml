@@ -1,0 +1,60 @@
+<?php
+/*
+ * @author    Tigren Solutions <info@tigren.com>
+ * @copyright Copyright (c) 2024 Tigren Solutions <https://www.tigren.com>. All rights reserved.
+ * @license   Open Software License ("OSL") v. 3.0
+ *
+ */
+
+/** @var  \Tigren\SimpleBlog\Block\Post $block */
+const URL_CATEGORY = "http://magento246.com/index.php/blog/post/";
+$linkImage = $block->getUrl('http://magento246.com/media/testimonials/post_image/');
+const URL_DETAIL = "http://magento246.com/index.php/blog/post/detail";
+?>
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Category</title>
+    <style>
+        .d-flex {
+            display: flex;
+            flex-flow: wrap;
+        }
+
+        .card {
+            border: 1px solid #767676;
+            box-shadow: 0px 0px 5px grey;
+            border-radius: 5px;
+            margin-right: 10px;
+            padding: 10px;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+<h2>List Post</h2>
+<div class="d-flex">
+    <?php
+    $block->getCurrentUrl();
+    foreach ($block->getPostItem() as $key => $value):?>
+        <div class="card" style="width: 18rem;">
+            <img src="<?= $linkImage . $value->getPostImage() ?>" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">Title: <?= $value->getTitle() ?> </h5>
+                <p class="card-text">Description: <?= $value->getShortContent() ?></p>
+                <a href="<?= URL_DETAIL . '?name_detail= ' . $value->getPostId() ?>" class="btn btn-primary">Go
+                    somewhere</a>
+            </div>
+        </div>
+    <?php endforeach; ?>
+</div>
+</body>
+</html>
+

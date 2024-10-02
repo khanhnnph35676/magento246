@@ -24,12 +24,12 @@ class Form extends Action
 
     public function execute()
     {
-        $id = $this->getRequest()->getParam('post');
+        $id = $this->getRequest()->getParam('post_id');
         $resultPage = $this->pageFactory->create();
         if ($id) {
-            $resultPage->getConfig()->getTitle()->prepend(__('Update new blog post'));
+            $resultPage->getConfig()->getTitle()->prepend(__('Update Blog Post'));
         } else {
-            $resultPage->getConfig()->getTitle()->prepend(__('Add new blog post'));
+            $resultPage->getConfig()->getTitle()->prepend(__('Add New Blog Post'));
         }
 
         return $resultPage;

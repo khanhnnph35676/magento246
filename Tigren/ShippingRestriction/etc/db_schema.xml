@@ -14,6 +14,8 @@
         <column name="from_date" xsi:type="date" nullable="true" comment="From Date"/>
         <column name="to_date" xsi:type="date" nullable="true" comment="To Date"/>
         <column name="conditions_serialized" xsi:type="text" nullable="true" comment="Serialized Conditions"/>
+        <column name="active_cart_price_rules" xsi:type="text" nullable="true" comment="Active Cart Price Rules"/>
+        <column name="in_active_cart_price_rule" xsi:type="text" nullable="true" comment="In Active Cart Price Rules"/>
 
         <constraint xsi:type="primary" referenceId="PRIMARY">
             <column name="entity_id"/>

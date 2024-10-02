@@ -1,0 +1,62 @@
+<?php
+/*
+ * @author    Tigren Solutions <info@tigren.com>
+ * @copyright Copyright (c) 2024 Tigren Solutions <https://www.tigren.com>. All rights reserved.
+ * @license   Open Software License ("OSL") v. 3.0
+ *
+ */
+
+/** @var  \Tigren\SimpleBlog\Block\Post $block */
+$block->getCurrentUrl();
+const URL_LIST = "http://magento246.com/index.php/blog/post/";
+const URL_DETAIL = "http://magento246.com/index.php/blog/post/detail";
+
+$linkImage = $block->getUrl('http://magento246.com/media/testimonials/post_image/');
+?>
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Category</title>
+    <style>
+        .d-flex {
+            display: flex;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+        }
+
+        .content {
+            margin-left: 20px;
+        }
+    </style>
+</head>
+<body>
+<h2>Post Detail</h2>
+
+<?php
+//if (isset($_GET['name_detail'])) {
+//    print_r($_GET['name_detail']);
+//}
+
+foreach ($block->getPostItem() as $key => $value):
+    if ($value->getPostId() == $_GET['name_detail'] && isset($_GET['name_detail'])):
+        ?>
+        <div>
+            <h3><?= $value->getTitle() ?></h3>
+            <img src="<?= $linkImage . $value->getPostImage() ?>" alt="">
+            <div class="content">
+                <p><?= $value->getShortContent() ?></p>
+                <p> <?= $value->getFullContent() ?></p>
+            </div>
+        </div>
+    <?php
+    endif;
+endforeach; ?>
+</body>
+</html>
+

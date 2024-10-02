@@ -199,29 +199,30 @@
                 </checkbox>
             </formElements>
         </field>
+        <field name="store_id" formElement="multiselect">
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Store</label>
+                <dataScope>store_id</dataScope>
+            </settings>
+            <formElements>
+                <multiselect>
+                    <settings>
+                        <options class="Tigren\CustomerGroupCatalog\Ui\CustomerGroupCatalog\StoreProvider"/>
+                    </settings>
+                </multiselect>
+            </formElements>
+        </field>
     </fieldset>
     <fieldset name="tab2">
         <settings>
             <label translate="true">Conditions</label>
             <dataScope>conditions</dataScope>
         </settings>
-        <!--        <htmlContent name="block_promo_catalog_edit_tab_conditions" sortOrder="20">-->
-        <!--            <argument name="data" xsi:type="array">-->
-        <!--                <item name="wrapper" xsi:type="array">-->
-        <!--                    <item name="label" xsi:type="string" translate="true">Conditions</item>-->
-        <!--                    <item name="collapsible" xsi:type="boolean">true</item>-->
-        <!--                    <item name="opened" xsi:type="boolean">false</item>-->
-        <!--                </item>-->
-        <!--            </argument>-->
-        <!--            <settings>-->
-        <!--                <wrapper>-->
-        <!--                    <canShow>true</canShow>-->
-        <!--                    <componentType>fieldset</componentType>-->
-        <!--                </wrapper>-->
-        <!--            </settings>-->
-        <!--            <block class="Tigren\ShippingRestriction\Block\Adminhtml\Promo\Catalog\Edit\Tab\Conditions"-->
-        <!--                   name="promo_catalog_edit_tab"/>-->
-        <!--        </htmlContent>-->
+        <htmlContent name="html_content">
+            <block name="conditions_apply_to"
+                   class="Magento\SalesRule\Block\Adminhtml\Promo\Quote\Edit\Tab\Conditions"/>
+        </htmlContent>
         <field name="active_cart_price_rules" formElement="multiselect">
             <settings>
                 <dataType>text</dataType>
@@ -256,19 +257,56 @@
             <label translate="true">Actions</label>
             <dataScope>actions</dataScope>
         </settings>
-        <field name="doc_methods">
-            <argument name="data" xsi:type="array">
-                <item name="config" xsi:type="array">
-                    <item name="label" xsi:type="string" translate="true">Documents Allowed Methods</item>
-                    <item name="dataScope" xsi:type="string">doc_methods</item>
-                    <item name="component" xsi:type="string">Magento_Ui/js/form/element/multiselect</item>
-                    <item name="formElement" xsi:type="string">multiselect</item>
-                    <item name="source" xsi:type="string">dhl_methods_source</item>
-                    <item name="options" xsi:type="object">Magento\Dhl\Model\Source\Method\Doc</item>
-                    <item name="sortOrder" xsi:type="number">170</item>
-                </item>
-            </argument>
+        <field name="todo" formElement="select">
+            <settings>
+                <dataType>int</dataType>
+                <label translate="true">What To Do</label>
+                <dataScope>to_do</dataScope>
+            </settings>
+            <formElements>
+                <select>
+                    <settings>
+                        <options>
+                            <option name="0" xsi:type="array">
+                                <item name="value" xsi:type="string">0</item>
+                                <item name="label" xsi:type="string">Hide</item>
+                            </option>
+                            <option name="1" xsi:type="array">
+                                <item name="value" xsi:type="string">1</item>
+                                <item name="label" xsi:type="string">Show</item>
+                            </option>
+                        </options>
+                    </settings>
+                </select>
+            </formElements>
         </field>
-
+        <field name="shipping_method" formElement="multiselect">
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Select Shipping Method</label>
+                <dataScope>shipping_method</dataScope>
+            </settings>
+            <formElements>
+                <multiselect>
+                    <settings>
+                        <options class="Tigren\ShippingRestriction\Model\Config\Source\ShippingMethod"/>
+                    </settings>
+                </multiselect>
+            </formElements>
+        </field>
+        <field name="to_apply" formElement="multiselect">
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Where to Aplly</label>
+                <dataScope>shipping_method</dataScope>
+            </settings>
+            <formElements>
+                <multiselect>
+                    <settings>
+                        <options/>
+                    </settings>
+                </multiselect>
+            </formElements>
+        </field>
     </fieldset>
 </form>

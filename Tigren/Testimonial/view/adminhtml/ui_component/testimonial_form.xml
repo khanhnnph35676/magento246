@@ -189,8 +189,31 @@
                 </select>
             </formElements>
         </field>
+        <!--        <field name="assign_customers_grid" formElement="uiGrid">-->
+        <!--            <argument name="data" xsi:type="array">-->
+        <!--                <item name="config" xsi:type="array">-->
+        <!--                    <item name="component" xsi:type="string">Magento_Ui/js/grid/list</item>-->
+        <!--                    <item name="provider" xsi:type="string">assign_customers_grid.assign_customers_grid_data_source-->
+        <!--                    </item>-->
+        <!--                    <item name="dataScope" xsi:type="string">assign_customers_grid</item>-->
+        <!--                </item>-->
+        <!--            </argument>-->
+        <!--            <dataSource name="assign_customers_grid_data_source">-->
+        <!--                <argument name="data" xsi:type="array">-->
+        <!--                    <item name="js_config" xsi:type="array">-->
+        <!--                        <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>-->
+        <!--                    </item>-->
+        <!--                </argument>-->
+        <!--                <settings>-->
+        <!--                    <submitUrl path="testimonial/testimonial/save"/>-->
+        <!--                </settings>-->
+        <!--            </dataSource>-->
+        <!--        </field>-->
+        <!--        <input type="hidden" name="selected_customers" id="selected_customers" value=""/>-->
     </fieldset>
+
     <fieldset name="assign_customers_grid">
+
         <argument name="data" xsi:type="array">
             <item name="config" xsi:type="array">
                 <item name="label" xsi:type="string" translate="true">Customer Fieldset</item>
@@ -210,5 +233,7 @@
                 Tigren\Testimonial\Block\Adminhtml\AssignCustomer
             </argument>
         </htmlContent>
+
+        <!--        <input type="hidden" name="selected_customers" id="selected_customers" value=""/>-->
     </fieldset>
 </form>

@@ -62,47 +62,71 @@ class Save extends Action implements ButtonProviderInterface
             'name' => $data['name'],
             'start_time' => $data['start_time'],
             'end_time' => $data['end_time'],
-            'customer_group_ids' => '',
             'priority' => $data['priority'],
             'discount_amount' => $data['discount_amount'],
             'is_active' => $data['is_active'],
+            'customer_group_ids' => $data['customer_group_ids'],
+            'store_id' => $data['store_id'],
+            'product_ids' => $data['product_ids'],
         ];
+
         $rule = $this->ruleFactory->create();
         $collection = $this->colectionFactory->create();
         $listRule = $collection->getData();
-//        var_dump($listRule);
-//        dd();
+
         if (isset($id)) {
             $rule->load($id);
         }
+
         try {
-            if (count($data['customer_group_ids']) <= 1) {
-                $newData['customer_group_ids'] = $data['customer_group_ids'][0];
+            // Kiểm tra và lưu từng giá trị cho customer group, store và product
+            $customerGroupIds = $data['customer_group_ids'] ?? [];
+            $storeIds = $data['store_id'] ?? [];
+            $productIds = $data['product_ids'] ?? [];
+
+            // Lưu khi chỉ có một customer group
+            if (count($customerGroupIds) <= 1 && count($storeIds) <= 1 && count($productIds) <= 1) {
+                $newData['customer_group_ids'] = $customerGroupIds[0] ?? '';
+                $newData['store_id'] = $storeIds[0] ?? '';// Ghép các store lại thành chuỗi
+                $newData['product_ids'] = $productIds[0] ?? ''; // Ghép các product lại thành chuỗi
                 $rule->addData($newData);
                 $rule->save();
             }
-            if (count($data['customer_group_ids']) > 1) {
-                foreach ($data['customer_group_ids'] as $key => $value) {
-                    $exists = false;
-                    foreach ($listRule as $key => $existingRule) {
-                        if ($existingRule['customer_group_ids'] == $value && $existingRule['name'] == $data['name']) {
-                            $exists = true;
-                            break;
+
+            // Lưu cho nhiều customer group
+            if (count($customerGroupIds) > 1 || count($storeIds) > 1 || count($productIds) > 1) {
+                foreach ($customerGroupIds as $groupId) {
+                    foreach ($storeIds as $storeId) {
+                        foreach ($productIds as $productId) {
+                            // Kiểm tra xem đã tồn tại rule với customer group và name hay chưa
+                            $exists = false;
+                            foreach ($listRule as $existingRule) {
+                                if ($existingRule['customer_group_ids'] == $groupId
+                                    && $existingRule['store_id'] == $storeId
+                                    && $existingRule['product_ids'] == $productId) {
+                                    $exists = true;
+                                    break;
+                                }
+                            }
+                            // Nếu chưa tồn tại, tạo mới
+                            if (!$exists) {
+                                $newData['customer_group_ids'] = $groupId;
+                                $newData['store_id'] = $storeId;
+                                $newData['product_ids'] = $productId;
+                                $newRule = clone $rule;
+                                $newRule->setId(null); // Đảm bảo ID là null để tạo bản ghi mới
+                                $newRule->addData($newData);
+                                $newRule->save(); // Lưu bản ghi mới
+                            }
                         }
-                    }
-                    if (!$exists) {
-                        $newData = ['customer_group_ids' => $value];
-                        $newRule = clone $rule;
-                        $newRule->setId(null); // Đảm bảo ID là null để tạo bản ghi mới
-                        $newRule->addData($newData); // Thêm dữ liệu mới
-                        $newRule->save(); // Lưu bản ghi mới
                     }
                 }
             }
+
+            $this->messageManager->addSuccessMessage(__('You saved the Customer Group Catalog.'));
         } catch (\Exception $exception) {
             $this->messageManager->addErrorMessage(__($exception->getMessage()));
         }
-        $this->messageManager->addSuccessMessage(__('You saves the Customer Group Catalog.'));
         return $resultRedirect->setPath('*/*/index');
     }
 

@@ -35,10 +35,9 @@
         <column xsi:type="text" name="short_content" nullable="true" comment="Short Content"/>
         <column xsi:type="varchar" name="author" nullable="false" length="255" comment="Author Name"/>
         <column xsi:type="smallint" name="status" nullable="false" default="1" comment="Status"/>
-        <column xsi:type="timestamp" name="created_at" nullable="false" default="CURRENT_TIMESTAMP"
+        <column xsi:type="timestamp" name="published_at" nullable="false" default="CURRENT_TIMESTAMP"
                 comment="Created At"/>
-        <column xsi:type="timestamp" name="updated_at" nullable="false" default="CURRENT_TIMESTAMP"
-                comment="Updated At"/>
+        <column xsi:type="int" name="category_id" nullable="false" comment="Category Id"/>
         <constraint xsi:type="primary" referenceId="PRIMARY">
             <column name="post_id"/>
         </constraint>

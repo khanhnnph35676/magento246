@@ -129,12 +129,13 @@
                 <label translate="true">Title</label>
             </settings>
         </column>
-        <column name="post_image">
+        <column name="post_image" class="Tigren\SimpleBlog\Ui\Component\Listing\Column\Thumbnail"
+                component="Magento_Ui/js/grid/columns/thumbnail">
             <settings>
-                <filter>text</filter>
                 <label translate="true">Post Image</label>
             </settings>
         </column>
+
         <column name="list_image">
             <settings>
                 <filter>text</filter>
@@ -159,16 +160,16 @@
                 <label translate="true">Author</label>
             </settings>
         </column>
-        <column name="created_at">
+        <column name="published_at">
             <settings>
                 <filter>dateRange</filter>
-                <label translate="true">Create At</label>
+                <label translate="true">Published At</label>
             </settings>
         </column>
-        <column name="updated_at">
+        <column name="category_id">
             <settings>
-                <filter>dateRange</filter>
-                <label translate="true">Update At</label>
+                <filter>text</filter>
+                <label translate="true">Category Id</label>
             </settings>
         </column>
         <actionsColumn name="actions" class="Tigren\SimpleBlog\Ui\Component\Listing\Column\Actions">

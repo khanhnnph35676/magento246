@@ -69,7 +69,7 @@
             </argument>
             <settings>
                 <dataType>boolean</dataType>
-                <label translate="true">Enable</label>
+                <label translate="true">Status</label>
                 <dataScope>status</dataScope>
             </settings>
             <formElements>
@@ -97,6 +97,21 @@
                 <dataType>text</dataType>
                 <label translate="true">Title</label>
                 <dataScope>title</dataScope>
+            </settings>
+        </field>
+        <field name="author" sortOrder="20" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">blog_post</item>
+                </item>
+            </argument>
+            <settings>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+                <dataType>text</dataType>
+                <label translate="true">Author</label>
+                <dataScope>author</dataScope>
             </settings>
         </field>
         <field name="short_content" sortOrder="20" formElement="input">
@@ -129,7 +144,7 @@
                 <dataScope>full_content</dataScope>
             </settings>
         </field>
-        <field name="created_at" sortOrder="20" formElement="date">
+        <field name="published_at" sortOrder="20" formElement="date">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="source" xsi:type="string">blog_post</item>
@@ -140,24 +155,50 @@
                     <rule name="required-entry" xsi:type="boolean">true</rule>
                 </validation>
                 <dataType>text</dataType>
-                <label translate="true">Create At</label>
-                <dataScope>create_at</dataScope>
+                <label translate="true">Published At</label>
+                <dataScope>published_at</dataScope>
             </settings>
         </field>
-        <field name="updated_at" sortOrder="20" formElement="date">
+        <field name="post_image" formElement="imageUploader">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
+                    <item name="dataScope" xsi:type="string">post_image</item>
+                    <item name="label" xsi:type="string" translate="true">Post Image</item>
                     <item name="source" xsi:type="string">blog_post</item>
                 </item>
             </argument>
             <settings>
+                <elementTmpl>ui/form/element/uploader/image</elementTmpl>
+                <visible>true</visible>
                 <validation>
-                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                    <rule name="required-entry" xsi:type="boolean">false</rule>
                 </validation>
-                <dataType>text</dataType>
-                <label translate="true">Update At</label>
-                <dataScope>update_at</dataScope>
             </settings>
+            <formElements>
+                <imageUploader>
+                    <settings>
+                        <uploaderConfig>
+                            <param xsi:type="url" name="url" path="*/*/upload"/>
+                        </uploaderConfig>
+                        <allowedExtensions>jpg jpeg png webp</allowedExtensions>
+                        <maxFileSize>4194309</maxFileSize>
+                    </settings>
+                </imageUploader>
+            </formElements>
+        </field>
+        <field name="category_id" formElement="select">
+            <settings>
+                <dataType>int</dataType>
+                <label translate="true">Category</label>
+                <dataScope>category_id</dataScope>
+            </settings>
+            <formElements>
+                <select>
+                    <settings>
+                        <options class="Tigren\SimpleBlog\Model\Category\CategoryProvider"/>
+                    </settings>
+                </select>
+            </formElements>
         </field>
     </fieldset>
 </form>

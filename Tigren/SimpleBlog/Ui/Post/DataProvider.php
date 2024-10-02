@@ -55,6 +55,28 @@ class DataProvider extends AbstractDataProvider
         $items = $this->collection->getItems();
         foreach ($items as $item) {
             $this->_loadedData[$item->getId()] = $item->getData();
+
+            $image = isset($item['post_image']) ? $item['post_image'] : null;
+            $data = $item->getData();
+            if (isset($image)) {
+                if (!$image) {
+                    $this->_loadedData[$item->getId()] = $data;
+                    return $this->_loadedData;
+                }
+                $imgPath = 'testimonials/post_image';
+                $baseUrl = $this->storeManager->getStore()->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_MEDIA);
+                $imageUrl = $baseUrl . $imgPath . '/' . $image;
+                $fullImagePath = $this->mediaDirectory->getAbsolutePath($imgPath) . '/' . $image;
+
+                $stat = $this->mediaDirectory->stat($fullImagePath);
+                $data['post_image'] = null;
+                $data['post_image'][0]['url'] = $imageUrl;
+                $data['post_image'][0]['name'] = $image;
+                $data['post_image'][0]['size'] = $stat['size'];
+                $data['post_image'][0]['type'] = $this->mime->getMimeType($fullImagePath);
+//                    $fullData = $this->_loadedData;
+                $this->_loadedData[$item->getId()] = $data;
+            }
         }
         return $this->_loadedData;
     }

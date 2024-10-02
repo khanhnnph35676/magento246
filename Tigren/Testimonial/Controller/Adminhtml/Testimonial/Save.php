@@ -43,12 +43,14 @@ class Save extends Action implements ButtonProviderInterface
     {
         $resultRedirect = $this->resultRedirectFactory->create();
         $data = $this->getRequest()->getPostValue();
+        $selectedCustomers = $this->getRequest()->getParam('selected_customers', []);
         if (!$data) {
             $this->messageManager->addErrorMessage(__('No data found to save.'));
             return $resultRedirect->setPath('*/*/');
         }
-//        var_dump($data);
-//        dd();
+
+        var_dump($data, $selectedCustomers);
+        dd();
         if (!empty($data['profile_image'][0]['name']) && isset($data['profile_image'][0]['id'])) {
             $data['profile_image'][0] = $data['profile_image'][0]['name'];
         } else {
@@ -64,7 +66,7 @@ class Save extends Action implements ButtonProviderInterface
             'message' => $data['message'],
             'rating' => $data['rating'],
             'profile_image' => $image,
-            'customer_id' => $data['data']['customer'],
+//            'customer_id' => $data['data']['customer'],
         ];
 //        var_dump($newData);
 //        dd();

@@ -20,6 +20,35 @@ const URL_TESTIMONIAL = "http://magento246.com/tigren/testimonial/";
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>List Testimonial</title>
+    <style>
+        .profile-container, .image {
+            display: flex;
+            margin: 10px 0px 10px 0px;
+        }
+
+        .custom-file-upload {
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .custom-file-upload img {
+            width: 70px;
+            height: 70px;
+            object-fit: cover;
+            border: 2px solid #ccc;
+            padding: 5px;
+            transition: border 0.3s ease;
+        }
+
+        .custom-file-upload img:hover {
+            border: 2px solid #007bff;
+        }
+
+        input[type="file"] {
+            display: none;
+        }
+
+    </style>
 </head>
 <body>
 <h3>Create testimonial</h3>
@@ -31,11 +60,15 @@ const URL_TESTIMONIAL = "http://magento246.com/tigren/testimonial/";
     <label for="email">Email</label>
     <input type="email" name="email">
 
-    <label for="profile_image">Profile_Image</label>
-    <input type="file" name="profile_image" accept="image/*">
-    <br>
-    <img src="" width="60" height="60" alt="">
-    <br>
+    <label class="image" for="">Profile Image</label>
+    <div class="profile-container">
+
+        <label for="profile_image" class="custom-file-upload">
+            <img id="previewImage" src="https://via.placeholder.com/70" alt="Profile Image"/>
+        </label>
+        <input type="file" id="profile_image" name="profile_image" accept="image/*" style="display:none"
+               onchange="previewFile()">
+    </div>
 
     <label for="rating">Rating</label>
     <select name="rating" id="">
@@ -54,6 +87,23 @@ const URL_TESTIMONIAL = "http://magento246.com/tigren/testimonial/";
     <br><br>
     <button>Send</button>
 </form>
+<script>
+    function previewFile() {
+        const file = document.getElementById('profile_image').files[0];
+        const preview = document.getElementById('previewImage');
+        const reader = new FileReader();
+
+        reader.onloadend = function () {
+            preview.src = reader.result;
+        }
+
+        if (file) {
+            reader.readAsDataURL(file); // Chuyển file thành chuỗi base64
+        } else {
+            preview.src = "https://via.placeholder.com/150"; // Hình ảnh mặc định nếu không có ảnh
+        }
+    }
+</script>
 </body>
 </html>
 

@@ -29,6 +29,7 @@ const URL_RULE = "http://magento246.com/rule/rule/";
 </head>
 <body>
 <h3>History</h3>
+<span><?= $block->getCustomerSession() ?></span>
 <table>
     <thead>
     <tr>
@@ -41,15 +42,17 @@ const URL_RULE = "http://magento246.com/rule/rule/";
     </thead>
     <tbody>
     <?php
-    foreach ($block->getRuleItem() as $value): ?>
-        <tr>
-            <td><?= $value->getEntityId() ?></td>
-            <td><?= $value->getOrderId() ?></td>
-            <td><?= $value->getCustomerId() ?></td>
-            <td><?= $value->getRuleId() ?></td>
-            <td><?= $value->getCreatedAt() ?></td>
-        </tr>
-    <?php endforeach; ?>
+    if ($block->getRuleItem() != null):
+        foreach ($block->getRuleItem() as $value): ?>
+            <tr>
+                <td><?= $value->getEntityId() ?></td>
+                <td><?= $value->getOrderId() ?></td>
+                <td><?= $value->getCustomerId() ?></td>
+                <td><?= $value->getRuleId() ?></td>
+                <td><?= $value->getCreatedAt() ?></td>
+            </tr>
+        <?php endforeach; ?>
+    <?php endif; ?>
     </tbody>
 </table>
 </body>
