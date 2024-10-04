@@ -92,7 +92,7 @@ class CustomListLink extends Link
         foreach ($categoryCollection as $category) {
             $categoryId = $category->getCategoryId();
             $categoryName = $category->getName();
-            $html .= '<li class="dropdown-item"><a href="' . $this->getUrl('blog/post/') . 'listPost?category=' . $categoryId . '">' . $this->escapeHtml($categoryName) . '</a></li>';
+            $html .= '<li class="dropdown-item"><a href="' . $this->getUrl('blog/post/') . 'listPost/category/' . $categoryId . '">' . $this->escapeHtml($categoryName) . '</a></li>';
         }
         // Kết thúc danh sách mục con
         $html .= '</ul>';

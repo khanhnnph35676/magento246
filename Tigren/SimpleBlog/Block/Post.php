@@ -2,12 +2,11 @@
 
 namespace Tigren\SimpleBlog\Block;
 
-use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\View\Element\Template;
 use Tigren\SimpleBlog\Model\ResourceModel\Post\Collection as PostCollection;
 use Tigren\SimpleBlog\Model\ResourceModel\Post\CollectionFactory;
-use Magento\Store\Model\ScopeInterface;
-use Magento\Customer\Model\SessionFactory;
+use Magento\Framework\UrlInterface;
+use Magento\Framework\App\Request\Http;
 
 class Post extends Template
 {
@@ -24,6 +23,11 @@ class Post extends Template
      */
     protected $_postColFactory;
 
+    protected $_urlInterface;
+    /**
+     * @var Http
+     */
+    protected $_request;
 
     /**
      * @param Template\Context $context
@@ -34,10 +38,13 @@ class Post extends Template
     public function __construct(
         Template\Context  $context,
         CollectionFactory $collectionFactory,
+        Http              $request,
         array             $data = []
     )
     {
         $this->_postColFactory = $collectionFactory;
+        $this->_urlInterface = $context->getUrlBuilder();
+        $this->_request = $request;
         parent::__construct($context, $data);
     }
 
@@ -52,5 +59,24 @@ class Post extends Template
             $this->_postCol = $this->_postColFactory->create();
         }
         return $this->_postCol;
+    }
+
+    public function getCurrentUrl()
+    {
+        return $this->_urlInterface->getCurrentUrl();
+    }
+
+    public function getPostItemByCategory()
+    {
+        // Lấy ID category từ URL
+        $categoryId = $this->_request->getParam('category');
+        return $categoryId;
+    }
+
+    public function getPostDetail()
+    {
+        // Lấy ID category từ URL
+        $id = $this->_request->getParam('id');
+        return $id;
     }
 }

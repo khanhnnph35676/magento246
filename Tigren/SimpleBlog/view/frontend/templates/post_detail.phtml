@@ -39,16 +39,13 @@ $linkImage = $block->getUrl('http://magento246.com/media/testimonials/post_image
 <h2>Post Detail</h2>
 
 <?php
-//if (isset($_GET['name_detail'])) {
-//    print_r($_GET['name_detail']);
-//}
-
-foreach ($block->getPostItem() as $key => $value):
-    if ($value->getPostId() == $_GET['name_detail'] && isset($_GET['name_detail'])):
+$id = $block->getPostDetail();
+foreach ($block->getPostItem() as $value):
+    if ($id == $value->getPostId()):
         ?>
         <div>
             <h3><?= $value->getTitle() ?></h3>
-            <img src="<?= $linkImage . $value->getPostImage() ?>" alt="">
+            <img src="<?= $linkImage . $value->getPostImage() ?>" alt="" width="70%" height="70%">
             <div class="content">
                 <p><?= $value->getShortContent() ?></p>
                 <p> <?= $value->getFullContent() ?></p>

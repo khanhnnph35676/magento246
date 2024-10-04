@@ -49,8 +49,8 @@ class Save extends Action implements ButtonProviderInterface
             return $resultRedirect->setPath('*/*/');
         }
 
-        var_dump($data, $selectedCustomers);
-        dd();
+//        var_dump($data, $selectedCustomers);
+//        dd();
         if (!empty($data['profile_image'][0]['name']) && isset($data['profile_image'][0]['id'])) {
             $data['profile_image'][0] = $data['profile_image'][0]['name'];
         } else {

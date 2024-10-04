@@ -7,10 +7,11 @@
  */
 
 /** @var  \Tigren\SimpleBlog\Block\Post $block */
-const URL_CATEGORY = "http://magento246.com/index.php/blog/post/";
-const URL_DETAIL = "http://magento246.com/index.php/blog/post/detail";
+
+const URL_DETAIL = "http://magento246.com/index.php/blog/post/detail/id/";
 
 $linkImage = $block->getUrl('http://magento246.com/media/testimonials/post_image/');
+$CATE = 'http://magento246.com/index.php/blog/post/listPost/category/'
 ?>
 <!doctype html>
 <html lang="en">
@@ -43,20 +44,21 @@ $linkImage = $block->getUrl('http://magento246.com/media/testimonials/post_image
 <h2>List Post</h2>
 <div class="d-flex">
     <?php
-    $block->getCurrentUrl();
+    $idCategory = $block->getPostItemByCategory();
     foreach ($block->getPostItem() as $key => $value):
-        if (isset($_GET['category']) && $_GET['category'] == $value->getCategoryId() && $value->getStatus() == '1'):
+        if ($idCategory == $value->getCategoryId() && $value->getStatus() == '1'):
             ?>
             <div class="card" style="width: 18rem;">
                 <img src="<?= $linkImage . $value->getPostImage() ?>" class="card-img-top" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">Title: <?= $value->getTitle() ?> </h5>
                     <p class="card-text">Description: <?= $value->getShortContent() ?></p>
-                    <a href="<?= URL_DETAIL . '?name_detail= ' . $value->getPostId() ?>" class="btn btn-primary">Go
+                    <a href="<?= URL_DETAIL . $value->getPostId() ?>" class="btn btn-primary">Go
                         somewhere</a>
                 </div>
             </div>
-        <?php endif;endforeach; ?>
+        <?php endif;
+    endforeach; ?>
 </div>
 </body>
 </html>
