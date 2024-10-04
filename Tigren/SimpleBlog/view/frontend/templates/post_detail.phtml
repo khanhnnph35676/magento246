@@ -40,12 +40,13 @@ $linkImage = $block->getUrl('http://magento246.com/media/testimonials/post_image
 
 <?php
 $id = $block->getPostDetail();
+echo $id;
 foreach ($block->getPostItem() as $value):
     if ($id == $value->getPostId()):
         ?>
         <div>
             <h3><?= $value->getTitle() ?></h3>
-            <img src="<?= $linkImage . $value->getPostImage() ?>" alt="" width="70%" height="70%">
+            <img src="<?= $linkImage . $value->getPostImage() ?>" alt="" width="90%" height="90">
             <div class="content">
                 <p><?= $value->getShortContent() ?></p>
                 <p> <?= $value->getFullContent() ?></p>

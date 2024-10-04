@@ -1,15 +1,6 @@
 <?php
 
-use Tigren\Testimonial\Block\TestimonialList;
-
-//
-////use Tigren\Testimonial\ViewModel\TestimonialViewModel;
-//
 /** @var  \Tigren\Testimonial\Block\TestimonialList $block */
-///** @var TestimonialViewModel $viewModel */
-//$viewModel = $block->getData('view_model');
-////$listTestimonial = $viewModel->getTestimonials();
-//print_r($block->getTestimonialItem());
 const URL_TESTIMONIAL = "http://magento246.com/tigren/testimonial/";
 $linkImage = $block->getUrl('http://magento246.com/media/testimonials/profile_image/');
 ?>
@@ -70,6 +61,19 @@ $linkImage = $block->getUrl('http://magento246.com/media/testimonials/profile_im
         </tr>
     <?php endforeach; ?>
     </tbody>
+
+    <div data-mage-init='{"fisheyeAcademy/widget-example":{}}'>
+        <div data-role="content" style="display:none;">
+            <p><?= __('Some content') ?></p>
+        </div>
+        <button data-role="showContent">
+            <?= __('Show') ?>
+        </button>
+        <button data-role="hideContent">
+            <?= __('Hide') ?>
+        </button>
+    </div>
+
 </table>
 </body>
 </html>

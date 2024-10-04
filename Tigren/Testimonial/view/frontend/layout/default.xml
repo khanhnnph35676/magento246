@@ -3,6 +3,7 @@
       xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <head>
         <script src="Tigren_Testimonial::js/example1.js"/>
+        <script src="Tigren_Testimonial::js/widget-example.js"/>
     </head>
     <body>
         <referenceContainer name="content">

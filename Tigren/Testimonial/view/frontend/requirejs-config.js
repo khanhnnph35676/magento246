@@ -7,8 +7,9 @@
 var config = {
     map: {
         '*': {
-            customJs: 'Tigren_Testimonial/example1', // Định nghĩa alias cho file JS
-            // customJs1: 'Tigren_Testimonial/example2'
+            customJs: 'Tigren_Testimonial/example1',
+            customJs1: 'Tigren_Testimonial/example2',
+            'fisheyeAcademy/widget-example': 'Tigren_Testimonial/js/widget-example'
         }
     },
     shim: {

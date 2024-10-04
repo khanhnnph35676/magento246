@@ -33,23 +33,23 @@ const URL_RULE = "http://magento246.com/rule/rule/";
 <table>
     <thead>
     <tr>
-        <th>Id</th>
         <th>Order</th>
         <th>Customer</th>
         <th>Rule</th>
-        <th>End Time</th>
+        <th>Time Order</th>
     </tr>
     </thead>
     <tbody>
     <?php
+
     if ($block->getRuleItem() != null):
         foreach ($block->getRuleItem() as $value): ?>
             <tr>
                 <td><?= $value->getEntityId() ?></td>
                 <td><?= $value->getOrderId() ?></td>
                 <td><?= $value->getCustomerId() ?></td>
-                <td><?= $value->getRuleId() ?></td>
-                <td><?= $value->getCreatedAt() ?></td>
+                <td><?= $value->getRuleId() ?> </td>
+                <td><?= date($value->getCreatedAt()) ?></td>
             </tr>
         <?php endforeach; ?>
     <?php endif; ?>
