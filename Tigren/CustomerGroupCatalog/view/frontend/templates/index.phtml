@@ -20,6 +20,11 @@ const URL_RULE = "http://magento246.com/rule/rule/";
             display: flex;
             align-items: center;
             gap: 10px;
+            border: 1px solid #a29f9f;
+            padding: 5px;
+            border-radius: 5px;
+            color: black;
+            margin-bottom: 5px;
         }
 
         table {
@@ -34,7 +39,6 @@ const URL_RULE = "http://magento246.com/rule/rule/";
     <thead>
     <tr>
         <th>Order</th>
-        <th>Customer</th>
         <th>Rule</th>
         <th>Time Order</th>
     </tr>
@@ -45,16 +49,29 @@ const URL_RULE = "http://magento246.com/rule/rule/";
     if ($block->getRuleItem() != null):
         foreach ($block->getRuleItem() as $value): ?>
             <tr>
-                <td><?= $value->getEntityId() ?></td>
-                <td><?= $value->getOrderId() ?></td>
-                <td><?= $value->getCustomerId() ?></td>
-                <td><?= $value->getRuleId() ?> </td>
+                <td><a href=""><?= $value->getEntityId() ?>  </a></td>
+                <td><a href=""><?= $value->getOrderId() ?> </a></td>
+                <td><a href=""><?= $value->getCustomerId() ?>  </a></td>
+                <td><a href=""><?= $value->getRuleId() ?></a></td>
                 <td><?= date($value->getCreatedAt()) ?></td>
             </tr>
         <?php endforeach; ?>
     <?php endif; ?>
     </tbody>
 </table>
+<?php foreach ($block->getRuleItem() as $value): ?>
+    <a href="" class="flex">
+        <div class="group">
+            Order Code: <?= $value->getOrderId() ?>
+        </div>
+        <div class="group">
+            Discount: <?= $value->getRuleId() ?>
+        </div>
+        <div class="group">
+            Time: <?= $value->getCreatedAt() ?>
+        </div>
+    </a>
+<?php endforeach; ?>
 </body>
 </html>
 

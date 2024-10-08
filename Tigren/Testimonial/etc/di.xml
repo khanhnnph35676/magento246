@@ -1,6 +1,10 @@
 <?xml version="1.0"?>
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Tigren\Testimonial\Api\CustomerManagerInterface"
+                type="Tigren\Testimonial\Model\Api\CustomerApiManager"/>
+    <preference for="Tigren\Testimonial\Api\Data\CustomerApiInterface"
+                type="Tigren\Testimonial\Model\CustomerApi"/>
     <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
         <arguments>
             <argument name="collections" xsi:type="array">
@@ -21,4 +25,9 @@
             </argument>
         </arguments>
     </virtualType>
+    <!--    <preference for="Tigren\Testimonial\Api\TestApiManagementInterface"-->
+    <!--                type="Tigren\Testimonial\Model\Api\TestApiManagement"/>-->
+    <!--    <preference for="Tigren\Testimonial\Api\Data\TestimonialInterface" type="Tigren\Testimonial\Model\TestApi"/>-->
+
+
 </config>

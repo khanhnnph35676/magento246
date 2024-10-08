@@ -5,39 +5,156 @@ namespace Tigren\Testimonial\Api\Data;
 
 interface TestimonialInterface
 {
-    public function getEntityId(): int;
+    const ENTITY_ID = 'entity_id';
+    const NAME = 'name';
+    const MESSAGE = 'message';
+    const CUSTOMER_ID = 'customer_id';
+    const CREATED_AT = 'created_at';
+    const EMAIL = 'email';
+    const COMPANY = 'company';
+    const RATING = 'rating';
+    const PROFILE_IMAGE = 'profile_image';
+    const STATUS = 'status';
+    /**#@-*/
+    /**
+     * Get entity_id.
+     * @return int|null
+     * @return \Tigren\Testimonial\Api\Data\TestimonialInterface
+     */
+    public function getEntityId();
 
-    public function setEntityId(int $entityId);
+    /**
+     * Set entity_id.
+     * @param int $entity_id
+     * @return \Tigren\Testimonial\Api\Data\TestimonialInterface
+     */
+    public function setEntityId($entity_id);
 
-    public function getName(): string;
+    /**
+     * Get customer_id.
+     * @return string|null
+     * @return \Tigren\Testimonial\Api\Data\TestimonialInterface
+     */
+    public function getCustomerId();
 
-    public function setName(string $name);
+    /**
+     * Set customer_id.
+     * @param int $customer_id
+     * @return \Tigren\Testimonial\Api\Data\TestimonialInterface
+     */
+    public function setCustomerId($customer_id);
 
-    public function getEmail(): string;
+    /**
+     * Get name.
+     * @return string|null
+     * @return \Tigren\Testimonial\Api\Data\TestimonialInterface
+     */
+    public function getName();
 
-    public function setEmail(string $email);
+    /**
+     * Set name.
+     * @param string $name
+     * @return \Tigren\Testimonial\Api\Data\TestimonialInterface
+     */
+    public function setName($name);
 
-    public function getMessage(): string;
+    /**
+     * Get Message.
+     * @return string|null
+     * @return \Tigren\Testimonial\Api\Data\TestimonialInterface
+     */
+    public function getMessage();
 
-    public function setMessage(string $message);
+    /**
+     * Set Message.
+     * @param string $message
+     * @return \Tigren\Testimonial\Api\Data\TestimonialInterface
+     */
+    public function setMessage($message);
 
-    public function getCompany(): ?string;
+    /**
+     * Get Email.
+     * @return string|null
+     * @return \Tigren\Testimonial\Api\Data\TestimonialInterface
+     */
+    public function getEmail();
 
-    public function setCompany(?string $company);
+    /**
+     * Set Email.
+     * @param string $email
+     * @return \Tigren\Testimonial\Api\Data\TestimonialInterface
+     */
+    public function setEmail($email);
 
-    public function getRating(): int;
+    /**
+     * Get company.
+     * @return string|null
+     * @return \Tigren\Testimonial\Api\Data\TestimonialInterface
+     */
+    public function getCompany();
 
-    public function setRating(int $rating);
+    /**
+     * Set company.
+     * @param string $company
+     * @return \Tigren\Testimonial\Api\Data\TestimonialInterface
+     */
+    public function setCompany($company);
 
-    public function getProfileImage(): ?string;
+    /**
+     * Get rating.
+     * @return string|null
+     * @return \Tigren\Testimonial\Api\Data\TestimonialInterface
+     */
+    public function getRating();
 
-    public function setProfileImage(?string $profileImage);
+    /**
+     * Set rating.
+     * @param string $rating
+     * @return \Tigren\Testimonial\Api\Data\TestimonialInterface
+     */
+    public function setRating($rating);
 
-    public function getStatus(): int;
+    /**
+     * Get profile_image.
+     * @return string|null
+     * @return \Tigren\Testimonial\Api\Data\TestimonialInterface
+     */
+    public function getProfileImage();
 
-    public function setStatus(int $status);
+    /**
+     * Set profile_image.
+     * @param string $profile_image
+     * @return \Tigren\Testimonial\Api\Data\TestimonialInterface
+     */
+    public function setProfileImage($profile_image);
 
-    public function getCreatedAt(): string;
+    /**
+     * Get status.
+     * @return string|null
+     * @return \Tigren\Testimonial\Api\Data\TestimonialInterface
+     */
+    public function getStatus();
 
-    public function setCreatedAt(string $createdAt);
+    /**
+     * Set status.
+     * @param string $status
+     * @return \Tigren\Testimonial\Api\Data\TestimonialInterface
+     */
+    public function setStatus($status);
+
+    /**
+     * Get created_at.
+     * @return string|null
+     * @return \Tigren\Testimonial\Api\Data\TestimonialInterface
+     */
+    public function getCreatedAt();
+
+    /**
+     * Set created_at.
+     * @param string $created_at
+     * @return \Tigren\Testimonial\Api\Data\TestimonialInterface
+     */
+    public function setCreatedAt($created_at);
+
+
 }
