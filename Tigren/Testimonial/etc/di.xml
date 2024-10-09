@@ -5,6 +5,12 @@
                 type="Tigren\Testimonial\Model\Api\CustomerApiManager"/>
     <preference for="Tigren\Testimonial\Api\Data\CustomerApiInterface"
                 type="Tigren\Testimonial\Model\CustomerApi"/>
+    <!-- api testimonial -->
+    <preference for="Tigren\Testimonial\Api\TestApiManagerInterface"
+                type="Tigren\Testimonial\Model\Api\TestApiManagement"/>
+    <preference for="Tigren\Testimonial\Api\Data\TestimonialInterface"
+                type="Tigren\Testimonial\Model\TestApi"/>
+
     <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
         <arguments>
             <argument name="collections" xsi:type="array">
@@ -14,7 +20,6 @@
             </argument>
         </arguments>
     </type>
-    <!--    Tigren\Testimonial\Model\ResourceModel\Testimonial\Grid\Collection-->
     <virtualType name="Tigren\Testimonial\Model\ResourceModel\Testimonial\Grid\Collection"
                  type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
         <arguments>
@@ -25,9 +30,4 @@
             </argument>
         </arguments>
     </virtualType>
-    <!--    <preference for="Tigren\Testimonial\Api\TestApiManagementInterface"-->
-    <!--                type="Tigren\Testimonial\Model\Api\TestApiManagement"/>-->
-    <!--    <preference for="Tigren\Testimonial\Api\Data\TestimonialInterface" type="Tigren\Testimonial\Model\TestApi"/>-->
-
-
 </config>

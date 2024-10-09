@@ -12,185 +12,128 @@ declare(strict_types=1);
 namespace Tigren\Testimonial\Model;
 
 /**
- * Marketplace Product Model.
  *
- * @method \Tigren\Testimonial\Model\ResourceModel\Testimonial _getResource()
- * @method \Tigren\Testimonial\Model\ResourceModel\Testimonial getResource()
  */
 class TestApi implements \Tigren\Testimonial\Api\Data\TestimonialInterface
 {
-    /**
-     * Get ID.
-     *
-     * @return int
-     */
+    protected $_entity_id;
+    protected $_name;
+    protected $_email;
+    protected $_message;
+    protected $_status;
+    protected $_created_at;
+    protected $_company;
+    protected $_rating;
+    protected $_profileImage;
+    protected $_customer_id;
+
     public function getEntityId()
     {
-        return 3;
+        return $this->_entity_id;
     }
 
-    /**
-     * Set entity_id.
-     *
-     * @param int $entity_id
-     *
-     * @return \Tigren\Testimonial\Api\Data\TestimonialInterface
-     */
     public function setEntityId($entity_id)
     {
+        $this->_entity_id = $entity_id;
+        return $this;
     }
 
-    /**
-     * Get title.
-     *
-     * @return string|null
-     */
     public function getName()
     {
-        return 'this is test name';
+        return $this->_name;
     }
 
-    /**
-     * Set name.
-     *
-     * @param string $name
-     *
-     * @return \Tigren\Testimonial\Api\Data\TestimonialInterface
-     */
     public function setName($name)
     {
+        $this->_name = $name;
+        return $this;
     }
 
-    /**
-     * Get desc.
-     *
-     * @return string|null
-     */
     public function getMessage()
     {
-        return 'this is Message';
+        return $this->_message;
     }
 
-    /**
-     * Set Desc.
-     *
-     * @param string $message
-     *
-     * @return \Tigren\Testimonial\Api\Data\TestimonialInterface
-     */
     public function setMessage($message)
     {
+        $this->_message = $message;
+        return $this;
     }
 
     public function getCustomerId()
     {
-        return '7';
+        return $this->_customer_id;
     }
 
-    /**
-     * Set customer_id.
-     *
-     * @param string $customer_id
-     *
-     * @return \Tigren\Testimonial\Api\Data\TestimonialInterface
-     */
     public function setCustomerId($customer_id)
     {
+        $this->_customer_id = $customer_id;
+        return $this;
     }
 
     public function getEmail()
     {
-        return 'khanhnhunguyen@gmail.com';
+        return $this->_email;
     }
 
-    /**
-     * Set email.
-     *
-     * @param string $email
-     *
-     * @return \Tigren\Testimonial\Api\Data\TestimonialInterface
-     */
     public function setEmail($email)
     {
+        $this->_email = $email;
+        return $this;
     }
 
     public function getCompany()
     {
-        return 'nosd';
+        return $this->_company;
     }
 
-    /**
-     * Set company.
-     *
-     * @param string $company
-     *
-     * @return \Tigren\Testimonial\Api\Data\TestimonialInterface
-     */
     public function setCompany($company)
     {
+        $this->_company = $company;
+        return $this;
     }
 
     public function getRating()
     {
-        return '1';
+        return $this->_rating;
     }
 
-    /**
-     * Set rating.
-     *
-     * @param string $rating
-     *
-     * @return \Tigren\Testimonial\Api\Data\TestimonialInterface
-     */
     public function setRating($rating)
     {
+        $this->_rating = $rating;
+        return $this;
     }
 
     public function getProfileImage()
     {
-        return '1.jpg';
+        return $this->_profileImage;
     }
 
-    /**
-     * Set profile_image.
-     *
-     * @param string $profile_image
-     *
-     * @return \Tigren\Testimonial\Api\Data\TestimonialInterface
-     */
     public function setProfileImage($profile_image)
     {
+        $this->_profileImage = $profile_image;
+        return $this;
     }
 
     public function getStatus()
     {
-        return '1';
+        return $this->_status;
     }
 
-    /**
-     * Set status.
-     *
-     * @param string $status
-     *
-     * @return \Tigren\Testimonial\Api\Data\TestimonialInterface
-     */
     public function setStatus($status)
     {
+        $this->_status = $status;
+        return $this;
     }
 
     public function getCreatedAt()
     {
-        return '2024-10-01 12:34:56';
+        return $this->_created_at;
     }
 
-    /**
-     * Set created_at.
-     *
-     * @param string $created_at
-     *
-     * @return \Tigren\Testimonial\Api\Data\TestimonialInterface
-     */
     public function setCreatedAt($created_at)
     {
+        $this->_created_at = $created_at;
+        return $this;
     }
 }

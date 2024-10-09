@@ -8,16 +8,21 @@
 
 <routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Webapi:etc/webapi.xsd">
-    <!--    <route url="/V1/testapi/testimonial/me" method="GET">-->
-    <!--        <service class="Tigren\Testimonial\Api\TestApiManagementInterface" method="getApiData"/>-->
-    <!--        <resources>-->
-    <!--            <resource ref="self"/>-->
-    <!--        </resources>-->
-    <!--        <data>-->
-    <!--            <parameter name="entity_id" force="true">%customer_id%</parameter>-->
-    <!--        </data>-->
-    <!--    </route>-->
-
+    <route url="/V1/testapi/testimonial" method="POST">
+        <service class="Tigren\Testimonial\Api\TestApiManagerInterface" method="save"/>
+        <resources>
+            <resource ref="Tigren_Testimonial::testimonial"/>
+        </resources>
+    </route>
+    <route url="/V1/testapi/testimonial/me" method="GET">
+        <service class="Tigren\Testimonial\Api\TestApiManagerInterface" method="getApiData"/>
+        <resources>
+            <resource ref="self"/>
+        </resources>
+        <data>
+            <parameter name="entity_id" force="true">%entity_id%</parameter>
+        </data>
+    </route>
     <route url="/V1/testapi/custom/me" method="GET">
         <service class="Tigren\Testimonial\Api\CustomerManagerInterface" method="getApiData"/>
         <resources>
@@ -28,3 +33,4 @@
         </data>
     </route>
 </routes>
+

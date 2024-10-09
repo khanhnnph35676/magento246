@@ -6,10 +6,9 @@
  *
  */
 
-
 namespace Tigren\Testimonial\Api;
 
-interface TestApiManagementInterface
+interface TestApiManagerInterface
 {
     /**
      * get test Api data.
@@ -21,4 +20,13 @@ interface TestApiManagementInterface
      *
      */
     public function getApiData($entity_id);
+
+    /**
+     * Create new testimonial.
+     *
+     * @param array $data
+     * @return \Tigren\Testimonial\Api\TestApiManagerInterface
+     * @api
+     */
+    public function save(\Tigren\Testimonial\Api\Data\TestimonialInterface $data);
 }

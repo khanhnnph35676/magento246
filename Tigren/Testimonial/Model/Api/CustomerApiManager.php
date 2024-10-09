@@ -40,7 +40,6 @@ class CustomerApiManager implements \Tigren\Testimonial\Api\CustomerManagerInter
                     __('no data found')
                 );
             }
-
             return $model;
         } catch (\Magento\Framework\Exception\LocalizedException $e) {
             // Handle exception for localized error
