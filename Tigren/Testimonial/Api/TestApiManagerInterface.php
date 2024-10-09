@@ -29,4 +29,8 @@ interface TestApiManagerInterface
      * @api
      */
     public function save(\Tigren\Testimonial\Api\Data\TestimonialInterface $data);
+
+    public function update($entity_id, \Tigren\Testimonial\Api\Data\TestimonialInterface $data);
+
+    public function deleteById($entity_id);
 }

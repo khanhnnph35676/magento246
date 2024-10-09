@@ -48,47 +48,106 @@ class TestApiManagement implements \Tigren\Testimonial\Api\TestApiManagerInterfa
             }
             return $model;
         } catch (\Magento\Framework\Exception\LocalizedException $e) {
-            // Handle exception for localized error
             throw new \Magento\Framework\Exception\LocalizedException(__($e->getMessage()));
         } catch (\Exception $e) {
-            // Handle generic exception
             throw new \Magento\Framework\Exception\LocalizedException(__('Unable to process the request.'));
         }
     }
 
     /**
-     * Add a new testimonial.
-     *
-     * @param int|null $customer_id
-     * @param string $name
-     * @param string $email
-     * @param string $message
-     * @param string|null $company
-     * @param int $rating
-     * @param string|null $profile_image
-     * @return \Tigren\Testimonial\Api\TestApiManagerInterface
-     * @api
-     */
-    /**
      * Create new testimonial.
      *
-     * @param array $data
+     * @param \Tigren\Testimonial\Api\Data\TestimonialInterface $data
      * @return \Tigren\Testimonial\Api\Data\TestimonialInterface
      * @api
      */
     public function save(\Tigren\Testimonial\Api\Data\TestimonialInterface $data)
     {
         try {
+            // Check and set the status if not already set
             if (!$data->getStatus()) {
-                $data->setStatus(1);
+                $data->setStatus(1); // Assuming 1 means 'active'
             }
-            $this->_testApiFactory->save();
+
+            // Create a new testimonial instance
+            $testimonial = $this->_testApiFactory->create(); // Make sure you have the right factory
+
+            // Set the data
+            $testimonial->setCustomerId($data->getCustomerId());
+            $testimonial->setName($data->getName());
+            $testimonial->setEmail($data->getEmail());
+            $testimonial->setMessage($data->getMessage());
+            $testimonial->setCompany($data->getCompany());
+            $testimonial->setRating($data->getRating());
+            $testimonial->setProfileImage($data->getProfileImage());
+            $testimonial->setStatus($data->getStatus()); // Set status explicitly
+            // Save the testimonial
+            $testimonial->save(); // Call save on the testimonial instance
+
+            return $testimonial; // Return the saved testimonial object
+
         } catch (\Magento\Framework\Exception\LocalizedException $e) {
             $this->logger->error('Localized exception: ' . $e->getMessage());
             throw new \Magento\Framework\Exception\LocalizedException(__($e->getMessage()));
         } catch (\Exception $e) {
             $this->logger->error('Exception while saving testimonial: ' . $e->getMessage());
             throw new \Magento\Framework\Exception\LocalizedException(__('Unable to save testimonial.'));
+        }
+    }
+
+    public function update($entity_id, \Tigren\Testimonial\Api\Data\TestimonialInterface $data)
+    {
+        try {
+            $testimonial = $this->_testApiFactory->create()->load($entity_id);
+            if (!$testimonial->getId()) {
+                throw new \Magento\Framework\Exception\LocalizedException(
+                    __('Testimonial with ID "%1" does not exist.', $entity_id)
+                );
+            }
+
+            // Update fields
+            $testimonial->setCustomerId($data->getCustomerId());
+            $testimonial->setName($data->getName());
+            $testimonial->setEmail($data->getEmail());
+            $testimonial->setMessage($data->getMessage());
+            $testimonial->setCompany($data->getCompany());
+            $testimonial->setRating($data->getRating());
+            $testimonial->setProfileImage($data->getProfileImage());
+            $testimonial->setStatus($data->getStatus());
+
+            // Save the updated testimonial
+            $testimonial->save();
+
+            return $testimonial; // Return the updated testimonial object
+
+        } catch (\Magento\Framework\Exception\LocalizedException $e) {
+            $this->logger->error('Localized exception: ' . $e->getMessage());
+            throw new \Magento\Framework\Exception\LocalizedException(__($e->getMessage()));
+        } catch (\Exception $e) {
+            $this->logger->error('Exception while updating testimonial: ' . $e->getMessage());
+            throw new \Magento\Framework\Exception\LocalizedException(__('Unable to update testimonial.'));
+        }
+    }
+
+    public function deleteById($entity_id)
+    {
+        try {
+            $testimonial = $this->_testApiFactory->create()->load($entity_id);
+            if (!$testimonial->getId()) {
+                throw new \Magento\Framework\Exception\LocalizedException(
+                    __('Testimonial with ID "%1" does not exist.', $entity_id)
+                );
+            }
+            // Delete the testimonial
+            $testimonial->delete();
+            return true; // Return true on successful deletion
+
+        } catch (\Magento\Framework\Exception\LocalizedException $e) {
+            $this->logger->error('Localized exception: ' . $e->getMessage());
+            throw new \Magento\Framework\Exception\LocalizedException(__($e->getMessage()));
+        } catch (\Exception $e) {
+            $this->logger->error('Exception while deleting testimonial: ' . $e->getMessage());
+            throw new \Magento\Framework\Exception\LocalizedException(__('Unable to delete testimonial.'));
         }
     }
 }
