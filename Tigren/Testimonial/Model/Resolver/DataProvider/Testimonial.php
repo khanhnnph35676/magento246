@@ -61,5 +61,14 @@ class Testimonial
         return ['message' => 'Testimonial updated successfully'];
     }
 
+    public function deleteTestimonial($id)
+    {
+        $testimonial = $this->_objectManager->create('Tigren\Testimonial\Model\Testimonial')->load($id);
+        if (!$testimonial->getId()) {
+            throw new GraphQlNoSuchEntityException(__('Testimonial with ID "%1" does not exist.', $id));
+        }
+        $testimonial->delete();
+        return true;
+    }
 
 }
