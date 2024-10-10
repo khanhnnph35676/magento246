@@ -47,4 +47,19 @@ class Testimonial
             throw new LocalizedException(__('Unable to save testimonial: ' . $e->getMessage()));
         }
     }
+
+    public function updateTestimonial($id, $data)
+    {
+        if (!is_array($data)) {
+            throw new LocalizedException(__('Invalid data format.'));
+        }
+        $testimonial = $this->_objectManager->create('Tigren\Testimonial\Model\Testimonial')->load($id);
+        if (!$testimonial->getId()) {
+            throw new GraphQlNoSuchEntityException(__('Testimonial with ID "%1" does not exist.', $id));
+        }
+        $testimonial->addData($data)->save();
+        return ['message' => 'Testimonial updated successfully'];
+    }
+
+
 }

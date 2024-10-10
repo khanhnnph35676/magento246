@@ -10,38 +10,38 @@ declare(strict_types=1);
 namespace Tigren\Testimonial\Model\Resolver;
 
 use Magento\Framework\GraphQl\Config\Element\Field;
+use Magento\Framework\GraphQl\Exception\GraphQlInputException;
+use Magento\Framework\GraphQl\Query\ResolverInterface;
 use Magento\Framework\GraphQl\Schema\Type\ResolveInfo;
-use Tigren\Testimonial\Model\ResourceModel\Testimonial as TestimonialResource;
-use Tigren\Testimonial\Model\ResourceModel\Testimonial\CollectionFactory;
-use Magento\Framework\Exception\NoSuchEntityException;
 
-class UpdateTestimonial
+class UpdateTestimonial implements ResolverInterface
 {
-    private $testimonialResource;
-    private $testimonialCollectionFactory;
+    /**
+     * @param Field $field
+     * @param \Magento\Framework\GraphQl\Query\Resolver\ContextInterface $context
+     * @param ResolveInfo $info
+     * @param array|null $value
+     * @param array|null $args
+     * @return array|\Magento\Framework\GraphQl\Query\Resolver\Value|mixed
+     * @throws GraphQlInputException
+     */
+    private $dataProvider;
 
     public function __construct(
-        TestimonialResource $testimonialResource,
-        CollectionFactory   $testimonialCollectionFactory
+        \Tigren\Testimonial\Model\Resolver\DataProvider\Testimonial $dataProvider,
     )
     {
-        $this->testimonialResource = $testimonialResource;
-        $this->testimonialCollectionFactory = $testimonialCollectionFactory;
+        $this->dataProvider = $dataProvider;
     }
 
-    public function resolve(Field $field, $context, ResolveInfo $info, array $value = null, array $args = null)
+    public function resolve(
+        $field,
+        $context,
+        ResolveInfo $info,
+        array $value = null,
+        array $args = null
+    )
     {
-        $testimonialId = $args['id'];
-        $input = $args['input'];
-
-        $collection = $this->testimonialCollectionFactory->create();
-        $testimonial = $collection->getItemById($testimonialId);
-
-        if (!$testimonial) {
-            throw new NoSuchEntityException(__('Testimonial with ID "%1" does not exist.', $testimonialId));
-        }
-        $testimonial->addData($input);
-        $this->testimonialResource->save($testimonial);
-        return $testimonial->getData();
+        return $this->dataProvider->updateTestimonial($args['id'], $args['input']);
     }
 }
