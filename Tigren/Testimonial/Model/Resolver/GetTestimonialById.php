@@ -5,7 +5,6 @@
  * @license   Open Software License ("OSL") v. 3.0
  *
  */
-
 declare(strict_types=1);
 
 namespace Tigren\Testimonial\Model\Resolver;

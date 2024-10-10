@@ -1,7 +1,11 @@
 type Query {
     getTestimonialById(id: Int!): Testimonial @resolver(class: "\\Tigren\\Testimonial\\Model\\Resolver\\GetTestimonialById")
 }
-
+type Mutation {
+    createTestimonial(input: SaveTestimonial!): Testimonial @resolver(class: "\\Tigren\\Testimonial\\Model\\Resolver\\CreateTestimonial")
+    updateTestimonial(id: Int!, input: SaveTestimonial!): Testimonial @resolver(class: "\\Tigren\\Testimonial\\Model\\Resolver\\UpdateTestimonial")
+    deleteTestimonial(id: Int!): Boolean @resolver(class: "\\Tigren\\Testimonial\\Model\\Resolver\\DeleteTestimonial")
+}
 type Testimonial {
     entity_id: Int
     customer_id: Int
@@ -14,3 +18,16 @@ type Testimonial {
     status: Int
     created_at: String
 }
+
+input SaveTestimonial {
+       customer_id: Int
+         name: String
+         email: String
+         message: String
+         company: String
+         rating: Int
+         profile_image: String
+         status: Int
+         created_at: String
+}
+

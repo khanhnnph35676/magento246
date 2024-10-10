@@ -24,8 +24,8 @@ class RuleList extends Template
      */
     protected $customerSession;
     /**
-     * //     * @var OrderCollectionFactory
-     * //     */
+     * @var OrderCollectionFactory
+     * */
 //    protected $orderCollection;
 
     /**
