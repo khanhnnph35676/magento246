@@ -50,18 +50,6 @@ class GetTestimonialById implements ResolverInterface
         if (!$testimonial) {
             throw new NoSuchEntityException(__('Testimonial with ID "%1" does not exist.', $testimonialId));
         }
-
-        return [
-            'entity_id' => $testimonial->getEntityId(),
-            'customer_id' => $testimonial->getCustomerId(),
-            'name' => $testimonial->getName(),
-            'email' => $testimonial->getEmail(),
-            'message' => $testimonial->getMessage(),
-            'company' => $testimonial->getCompany(),
-            'rating' => $testimonial->getRating(),
-            'profile_image' => $testimonial->getProfileImage(),
-            'status' => $testimonial->getStatus(),
-            'created_at' => $testimonial->getCreatedAt(),
-        ];
+        return $testimonial->getData();
     }
 }

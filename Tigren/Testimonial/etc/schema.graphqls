@@ -20,14 +20,14 @@ type Testimonial {
 }
 
 input SaveTestimonial {
-       customer_id: Int
-         name: String
-         email: String
-         message: String
-         company: String
-         rating: Int
-         profile_image: String
-         status: Int
-         created_at: String
+    customer_id: Int
+    name: String
+    email: String
+    message: String
+    company: String
+    rating: Int
+    profile_image: String
+    status: Int
+    created_at: String
 }
 
