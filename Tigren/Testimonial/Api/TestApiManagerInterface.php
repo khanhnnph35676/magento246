@@ -8,29 +8,28 @@
 
 namespace Tigren\Testimonial\Api;
 
+use Tigren\Testimonial\Api\Data\TestimonialInterface;
+
+/**
+ *
+ */
 interface TestApiManagerInterface
 {
     /**
-     * get test Api data.
-     *
      * @param int $entity_id
-     *
      * @return \Tigren\Testimonial\Api\Data\TestimonialInterface
      * @api
-     *
      */
-    public function getApiData($entity_id);
+    public function getApiData(int $entity_id);
 
     /**
-     * Create new testimonial.
-     *
-     * @param array $data
-     * @return \Tigren\Testimonial\Api\TestApiManagerInterface
-     * @api
+     * @return \Tigren\Testimonial\Api\Data\TestimonialInterface
      */
-    public function save(\Tigren\Testimonial\Api\Data\TestimonialInterface $data);
+    public function save(TestimonialInterface $data): void;
 
-    public function update($entity_id, \Tigren\Testimonial\Api\Data\TestimonialInterface $data);
-
-    public function deleteById($entity_id);
+    /**
+     * @param int $entity_id
+     * @return bool
+     */
+    public function deleteById(int $entity_id): bool;
 }

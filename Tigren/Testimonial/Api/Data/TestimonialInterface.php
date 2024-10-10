@@ -5,17 +5,6 @@ namespace Tigren\Testimonial\Api\Data;
 
 interface TestimonialInterface
 {
-    const ENTITY_ID = 'entity_id';
-    const NAME = 'name';
-    const MESSAGE = 'message';
-    const CUSTOMER_ID = 'customer_id';
-    const CREATED_AT = 'created_at';
-    const EMAIL = 'email';
-    const COMPANY = 'company';
-    const RATING = 'rating';
-    const PROFILE_IMAGE = 'profile_image';
-    const STATUS = 'status';
-
     /**
      * @return int|null
      */
